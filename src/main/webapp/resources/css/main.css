@@ -14,127 +14,8 @@ body {
 
 body .container {
 	width: 900px;
-	padding: 10px 0;
-}
 
-.container .header {
-	width: 900px;
-	height: 80px;
-	padding: 20px 0;
-	background: #fff;
 }
-
-.header .logo {
-	width: 200px;
-	height: 80px;
-	margin-bottom: 20px;
-	align-self: flex-start;
-	display: inline-block;
-}
-
-.header .top-links {
-	display: inline-block;
-	margin: 0 5px;
-	float: right;
-	width: 30%;
-	padding-bottom: 0px;
-}
-
-.header .top-links a {
-	margin: 5px;
-	color: black;
-	font-size: x-small;
-	font-weight: bold;
-}
-
-nav {
-	width: 900px;
-	display: inline-block;
-	margin-top: -30px;
-}
-
-nav .nav {
-	margin-top: 50px;
-	display: inline-block;
-	width: 650px;
-	height: 20px;
-	font-weight: bold;
-	float: right;
-}
-
-.nav>li:hover {
-	background-color: rgb(0, 0, 0);
-	color: rgb(255, 145, 0);
-}
-
-.nav>li {
-	display: inline-block;
-	list-style: none;
-	width: 120px;
-	text-align: center;
-	padding: 5px 0;
-	position: relative;
-	float: right;
-}
-
-.header img {
-	width: 100%;
-	height: 300px;
-	object-fit: cover;
-}
-
-.main {
-	display: flex;
-	justify-content: space-between;
-	background: #fff;
-	padding: 20px;
-	margin: 20px 0;
-}
-
-.main .sidebar {
-	flex: 0 0 200px;
-	background: #f9f9f9;
-	padding: 20px;
-	margin-right: 20px;
-}
-
-.main .content {
-	flex: 1;
-	display: flex;
-	flex-wrap: wrap;
-}
-
-.main .card {
-	flex: 0 0 calc(33.33% - 20px);
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	background: #f9f9f9;
-	margin-bottom: 20px;
-	padding: 20px;
-}
-
-.main .card img {
-	width: 100%;
-	height: 200px;
-	object-fit: cover;
-	margin-bottom: 15px;
-}
-
-.main .card h3 {
-	margin: 10px 0;
-	color: #F07D00;
-}
-
-.footer {
-	background-color: #73a839;
-	height: 120px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	color: white;
-}
-
 a {
 	color: #73a839;
 	text-decoration: none;
@@ -148,15 +29,178 @@ h3 {
 	color: #F07D00;
 }
 
+/*header-------------------------------------------------------*/
+header {
+	width: 900px;
+	height: 120px;
+	padding: 20px 0;
+	background: #fff;
+}
+
+header .top-links {
+	display: inline-block;
+	margin: 0 5px;
+	float: right;
+	width: 30%;
+	padding-bottom: 0px;
+}
+
+header .top-links a {
+	margin: 5px;
+	color: black;
+	font-size: x-small;
+	font-weight: bold;
+}
+header .logo {
+	width: 200px;
+	margin-bottom: 20px;
+	display: inline-block;
+	float: left;
+}
+header .middle-links {
+	margin-top: 30px;
+	display: inline-block;
+	width: 650px;
+	height: 20px;
+	font-weight: bold;
+	float: right;
+}
+
+.middle-links>li:hover {
+	background-color: rgb(0, 0, 0);
+	color: rgb(255, 145, 0);
+}
+
+.middle-nav>li {
+	display: inline-block;
+	list-style: none;
+	width: 120px;
+	text-align: center;
+	padding: 5px 0;
+	position: relative;
+	float: right;
+}
+
 .navimg {
 	width: 100%;
 	height: 14em;
 	margin-top: -20px;
 }
-footer .footer-logo img {
+/*sidebar--------------------------------------------*/
+aside {
+	width : 200px;
+	height: 1000px;
+	background: #f9f9f9;
+	display: inline-block;
+	float: left;
+	margin: 20px 0;
+}
+/*main----------------------------------------------*/
+.main {
+	display: inline-block;
+	width : 700px;
+	height: 1000px;
+	background: #fff;
+
+	margin: 20px 0;
+}
+
+.main>.card {
+	display: inline-block;
+	float: left;
+	background: #f9f9f9;
+
+	padding: 20px;    width: 193px;
+}
+
+.main>.card img {
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+	margin-bottom: 15px;
+}
+
+.main>.card h3 {
+	margin: 10px 0;
+	color: #F07D00;
+}
+
+/*footer-------------------------------------------------------*/
+footer * {
+	text-align: left;
+}
+
+footer {
+	background-color: #52AE32;
+	width:900px;
+	height: 160px;
+}
+
+footer>.footer-logo>a>img {
 	width: 200px;
 	margin: 20px;
 	align-self: flex-start;
 	display: inline-block;
 	float: left;
+}
+
+footer>.footer-small-logo img {
+	width: 20px;
+	height: auto;
+}
+
+.greenLine{
+	width : 150px;
+	display: block;
+	margin: 30px auto;
+	
+}
+
+.first-page {
+	margin: 0 auto;
+	text-align: center;
+	width : 900px;
+	height: 1100px;
+	background: #fff;
+}
+
+.first-page .card {
+	display: inline-block;
+	float: left;
+	margin: 10px;    
+	width: 280px;
+	height: 400px;
+}
+
+.first-page .card img {
+	width: 250px;
+	height: 250px;
+
+}
+
+.first-page .card h3 {
+	margin: 10px 0;
+	color: #F07D00;
+}
+.first-page h5 {
+	text-align: left;
+    margin: 5px 0;
+    color: #F07D00;
+}
+.first-page .card p {
+   font-size:small;
+   text-align: left;
+}
+.index-text {
+	width: 900px;
+	height: 300px;
+}	
+.index-text p{
+	height :400px;
+	text-align: left;
+ 	font-size: small;
+ 	font-weight: bold;
+}
+.first-card {
+	width: 900px;
 }

@@ -5,7 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <jsp:include page="/WEB-INF/views/common/header.jsp">
-	<jsp:param value="main page" name="title" />
+	<jsp:param value="vegform" name="title"/>
 </jsp:include>
 
 <div>

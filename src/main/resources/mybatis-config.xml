@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<!-- DB검색 결과가 빈칸이 아닌 null로 인식하게 설정 -->
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL" />
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+	</settings>
+	
+	<!-- 지정한 패키지 하위의 모든 클래스를 소문자로 시작하는 별칭을 등록 -->
+	<typeAliases>
+		<package name="com.kh.finalProject"/>
+	</typeAliases>
+	
+</configuration>

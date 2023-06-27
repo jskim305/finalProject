@@ -11,7 +11,7 @@ import com.kh.finalProject.member.model.service.MemberService;
 public class MemberController {
 
 	@Autowired
-	private MemberService memberServicel;
+	private MemberService memberService;
 	
 	
 }

@@ -15,7 +15,7 @@
           	 	<a>|</a>
             	<a href="#">장바구니</a>
              	<a>|</a>
-           		<a href="#"> 회원가입</a>
+           		<a href="${pageContext.request.contextPath}/member/memberEnroll.me"> 회원가입</a>
              	<a>|</a>
            		<a href="#">내역확인</a>
        		</div>

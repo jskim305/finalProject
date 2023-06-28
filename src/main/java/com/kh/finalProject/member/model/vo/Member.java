@@ -19,7 +19,7 @@ public class Member {
 	private String mName;
 	private String mBirth;
 	private Date mCreate;
-	private int mTel;
+	private String mTel;
 	private String mAddr;
 	private String mEmail;
 	private String mStatus;

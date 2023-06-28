@@ -35,7 +35,7 @@
 			<div class="card">
 				<h3>농장 체험</h3>
 				<img
-					src="${pageContext.request.contextPath}/resources/images/v1_93.png"
+					src="${pageContext.request.contextPath}/resources/images/soilhands.jpg"
 					alt="greenLine">
 				<h5>대여한 농지의 농사를 직접 지어보세요.</h5>
 				<p>도심근처에 위치한 농장을 활용해 자연을 느껴보세요!</p>

@@ -20,27 +20,36 @@
 
 </head>
 
+
+
 <body>
-	<header>
-		<div class="container">
-			<div class="top-links">
-				<c:if test="${empty loginMember}">
-          			<a href="${pageContext.request.contextPath}/member/loginMember.me" >로그인</a>
-         		</c:if>
-         		<c:if test="${not empty loginMember}">
-         			<a href="${pageContext.request.contextPath}/member/memberLogout.me" >로그아웃</a>
-         		</c:if>
-         		<a>|</a>
-         		<c:if test="${not empty loginMember}">
-	            	<a href="#">장바구니</a>
-	             	<a>|</a>
-             	</c:if>
-             	<c:if test="${empty loginMember}">
-	           		<a href="${pageContext.request.contextPath}/member/memberEnroll.me"> 회원가입</a>
-             	</c:if>
-             	<c:if test="${not empty loginMember}">
-           			<a href="#">내역확인</a>
-           		</c:if>
+   <header>
+      <div class="container">
+         <div class="top-links">
+            <c:if test="${empty loginMember}">
+                   <a href="${pageContext.request.contextPath}/member/loginMember.me" >로그인</a>
+               </c:if>
+               <c:if test="${not empty loginMember}">
+                  <a href="${pageContext.request.contextPath}/member/memberLogout.me" >로그아웃</a>
+               </c:if>
+               <a>|</a>
+               <c:if test="${not empty loginMember}">
+                  <a href="#">장바구니</a>
+                   <a>|</a>
+                </c:if>
+                <c:if test="${empty loginMember}">
+                    <a href="${pageContext.request.contextPath}/member/memberEnroll.me"> 회원가입</a>
+                </c:if>
+                <c:if test="${not empty loginMember}">
+                    <a href="#">내역확인</a>
+                    <a>|</a>
+                 </c:if>
+                 <c:if test="${not empty loginMember && loginMember.admin eq 0}">
+                    <a href="${pageContext.request.contextPath}/member/memberAll.me"> 마이페이지</a>
+                </c:if>
+                <c:if test="${not empty loginMember && loginMember.admin eq 1}">
+                    <a href="${pageContext.request.contextPath}/member/adminAll.me">관리자페이지</a>
+                 </c:if>
        		</div>
 			<div class="logo">
 				<img class="logo" src="${pageContext.request.contextPath}/resources/images/v22_2.png" alt="logo">
@@ -49,7 +58,7 @@
        			<ul class="middle-nav">
 	            	<li><a href="#">공지사항</a></li>
 	            	<li><a href="#">게시판</a></li>
-	            	<li><a href="#">농지예약</a></li>
+	            	<li><a href="${pageContext.request.contextPath}/reservation/indexFarm.do">농지예약</a></li>
 	            	<li><a href="#">패키지</a></li>
 	            	<li><a href="#">상품판매</a></li>
            			 <!-- <li><a href="#" hidd>로그인전용 또는 관리자전용페이지</a></li> -->

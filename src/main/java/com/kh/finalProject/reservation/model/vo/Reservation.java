@@ -1,5 +1,6 @@
 package com.kh.finalProject.reservation.model.vo;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

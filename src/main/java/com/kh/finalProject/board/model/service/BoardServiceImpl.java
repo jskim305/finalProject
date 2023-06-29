@@ -39,6 +39,13 @@ public class BoardServiceImpl implements BoardService {
 	public int updateCountBoard(int bNo) {
 		return boardDao.updateCountBoard(bNo);
 	}
+
+	/* 이 아래도 gpt 보고한것 */
+	@Override
+	public List<Board> getBoardList() {
+		
+		return null;
+	}
 }
 
 

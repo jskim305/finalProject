@@ -18,6 +18,8 @@ public interface BoardService {
 
 	Board selectOneBoard(int bNo);
 
+	List<Board> getBoardList();
+
 	
 
 	

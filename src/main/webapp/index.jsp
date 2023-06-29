@@ -9,7 +9,8 @@
 </jsp:include>
 <div class="container">
 	<div class="first-page">
-		<div class="greenLine">8
+		<div class="greenLine">
+				<img
 				src="${pageContext.request.contextPath}/resources/images/v1_53.png"
 				alt="greenLine">
 		</div>
@@ -73,10 +74,10 @@
 
 		<div class="index-text">
 			<p>
-				a 제공하기 위해 준비된 밭이랑은 고객님의 식탁 위에 무엇이 올라가는지를 알려드리고 있습니다 <br> 지속가능한
+				<b> 제공하기 위해 준비된 밭이랑은 고객님의 식탁 위에 무엇이 올라가는지를 알려드리고 있습니다 <br> 지속가능한
 				농업을 추구하며 환경에 부담을 주지 않는 방식으로 작물을 재배함을 알려드립니다<br> 밭이랑은 일상 생활에서
 				벗어나 스스로 하는 일에 즐거움을 느끼고, 작은 씨앗에서 접시 위로 올라가는 단순한 영양이상의 것을 선사하고자 합니다<br>
-				밭이랑은 고객님의 건강과 환경의 번영을 위해 노력하겠습니다<br>
+				밭이랑은 고객님의 건강과 환경의 번영을 위해 노력하겠습니다<br></b>
 			</p>
 		</div>
 	</div>

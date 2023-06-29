@@ -40,7 +40,7 @@ String id = (String) session.getAttribute("idKey");
 				<li><a href="#">마이페이지</a></li>
 			</ul>		
 	</header>
-	 --%>
+	 --%>    
 
 		<div class="container">	
 			<div class="reservation-info">

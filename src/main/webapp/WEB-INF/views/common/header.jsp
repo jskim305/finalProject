@@ -30,12 +30,17 @@
          		<c:if test="${not empty loginMember}">
          			<a href="${pageContext.request.contextPath}/member/memberLogout.me" >로그아웃</a>
          		</c:if>
-          	 	<a>|</a>
-            	<a href="#">장바구니</a>
-             	<a>|</a>
-           		<a href="${pageContext.request.contextPath}/member/memberEnroll.me"> 회원가입</a>
-             	<a>|</a>
-           		<a href="#">내역확인</a>
+         		<a>|</a>
+         		<c:if test="${not empty loginMember}">
+	            	<a href="#">장바구니</a>
+	             	<a>|</a>
+             	</c:if>
+             	<c:if test="${empty loginMember}">
+	           		<a href="${pageContext.request.contextPath}/member/memberEnroll.me"> 회원가입</a>
+             	</c:if>
+             	<c:if test="${not empty loginMember}">
+           			<a href="#">내역확인</a>
+           		</c:if>
        		</div>
 			<div class="logo">
 				<img class="logo" src="${pageContext.request.contextPath}/resources/images/v22_2.png" alt="logo">

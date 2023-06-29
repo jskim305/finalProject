@@ -3,6 +3,6 @@
   PUBLIC "//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
-<mapper namespace="com.ks.finalProject.member.model.dao.MemberDao">
+<mapper namespace="com.kh.finalProject.member.model.dao.MemberDao">
 
 </mapper>

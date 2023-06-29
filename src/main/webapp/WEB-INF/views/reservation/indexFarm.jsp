@@ -106,10 +106,11 @@ String id = (String) session.getAttribute("idKey");
 						</li>
 					</ul>
 					
-					<div class="btn-area">
+					<form method="post" action="/submitReserForm">
 						<button type="submit" class="btn-reservation">예약하기</button>
+					
 						<button type="reset" class="btn-reset">초기화</button>
-					</div>
+					</form>
 					
 				</div>
 			</div>
@@ -129,7 +130,8 @@ String id = (String) session.getAttribute("idKey");
 			.reservation-info .map-area area {cursor: pointer; outline:}
 		</style>
 
-		<script type="text/javascript">
+		
+
 		<!--
 			$(document).ready(function(){
 			    $('area').click( function(){
@@ -143,9 +145,27 @@ String id = (String) session.getAttribute("idKey");
 			    });
 			});
 		-->
-		</script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+			    $('area').click( function(){
+			    	var areaId = $(this).attr("id");
+			    	
+			    	if(areaId == "idx1"){
+			    		$(".mapImg").attr("src", "${pageContext.request.contextPath}/resources/images/imgmap1.png");
+			    	}
+			    	else if(areaId == "idx2"){
+			    		$(".mapImg").attr("src", "${pageContext.request.contextPath}/resources/images/imgmap2.png");
+			    	}
+			    	else if(areaId == "idx3"){
+			    		$(".mapImg").attr("src", "${pageContext.request.contextPath}/resources/images/imgmap3.png");
+			    	}
+			    	else if (areaId == "idx4"){
+			    		$(".mapImg").attr("src", "${pageContext.request.contextPath}/resources/images/imgmap4.png");
+			    	}
+			    });
+			});		
+	 </script>
 		
-
 		<div class="footer">
 		
 		</div>

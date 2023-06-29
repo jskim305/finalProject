@@ -52,6 +52,7 @@ header .top-links a {
 	color: black;
 	font-size: x-small;
 	font-weight: bold;
+	align: left;
 }
 header .logo {
 	width: 200px;

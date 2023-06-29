@@ -1,5 +1,5 @@
 * {
-	margin: 0 auto;
+	margin: 0; 
 	padding: 0;
 	list-style: none;
 	text-decoration: none;
@@ -14,6 +14,7 @@ body {
 
 body .container {
 	width: 900px;
+	margin: 0 auto;
 
 }
 a {
@@ -35,6 +36,7 @@ header {
 	height: 120px;
 	padding: 20px 0;
 	background: #fff;
+	margin: 0 auto;
 }
 
 header .top-links {
@@ -72,13 +74,13 @@ header .middle-links {
 }
 
 .middle-nav>li {
-	display: inline-block;
-	list-style: none;
-	width: 120px;
-	text-align: center;
-	padding: 5px 0;
-	position: relative;
-	float: right;
+   display: inline-block;
+   list-style: none;
+   width: 100px;
+   text-align: center;
+   padding: 5px 0;
+   position: relative;
+   float: right;
 }
 
 .navimg {
@@ -134,6 +136,7 @@ footer {
 	background-color: #52AE32;
 	width:900px;
 	height: 170px;
+	margin: 0 auto;
 }
 
 footer>.footer-logo>a>img {
@@ -154,6 +157,7 @@ footer .footer-small-logo img {
 	height : 30px;
 	width : 150px;
 	display: block;
+	margin: 0 auto;
 }
 .first-page .greenLine>img{
 	width : 150px;

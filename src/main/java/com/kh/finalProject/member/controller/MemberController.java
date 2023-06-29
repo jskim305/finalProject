@@ -55,7 +55,7 @@ public class MemberController {
 				// 입력된 비밀번호를 암호화된 비밀번호와 비교 인증
 				if(passwordEncoder.matches(mPwd, member.getMPwd())) {
 					model.addAttribute("loginMember", member);	
-					redirectAttr.addFlashAttribute("msg", "${member.getMId()}님 환영합니다.");	
+					redirectAttr.addFlashAttribute("msg", member.getMId() +"님 환영합니다.");	
 				}
 				else {
 					redirectAttr.addFlashAttribute("msg", "비밀번호가 맞지 않습니다.");

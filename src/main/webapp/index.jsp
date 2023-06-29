@@ -9,7 +9,7 @@
 </jsp:include>
 
 <div>
-	<H1>바디 asdasd부분</H1>
+	<H1>바디 asdsrgfdsfgasd부분</H1>
 </div>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

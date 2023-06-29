@@ -3,6 +3,51 @@
   PUBLIC "//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
+<<<<<<< Updated upstream
 <mapper namespace="com.ks.finalProject.board.model.dao.BoardDao">
+=======
+<mapper namespace="com.kh.finalProject.board.model.dao.BoardDao">
+  
+  <resultMap type="board" id="boardMap"></resultMap>
+	
+	<select id="selectBoardList" resultMap="boardMap">
+		select *
+		  from board
+		 order by board_no desc 
+	</select>
+	
+	<select id="selectTotalRecord">
+		select count(*)
+		  from board
+	</select>
+	
+	<insert id="insertBoard">
+		insert into board
+		values(
+		seq_board.nextval,
+		#{bTitle},
+		#{bWriter},
+		#{bTag},
+		#{bContent},
+		default,
+		default
+		)
+    </insert>
+		
+  <update id="updateCountBoard">
+	  update board
+	  set count = count +1 
+	  where board_no = #{bNo}
+	</update>
+	
+>>>>>>> Stashed changes
 
+	
+	<select id="selectOneBoard" resultMap="boardMap">
+        select *
+           from board
+          where board_no = #{bNo}
+     </select>
 </mapper>
+
+		

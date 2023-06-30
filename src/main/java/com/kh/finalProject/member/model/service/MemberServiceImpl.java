@@ -1,5 +1,7 @@
 package com.kh.finalProject.member.model.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,5 +22,10 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public Member seletOneMember(String mId) {
 		return memberDao.selectOneMember(mId);
+	}
+
+	@Override
+	public List<Member> selectadminList() {
+		return memberDao.selectadminList();
 	}
 }

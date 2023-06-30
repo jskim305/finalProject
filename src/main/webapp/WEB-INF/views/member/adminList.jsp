@@ -72,30 +72,34 @@ ADMIN
 		<thead>
 		<tr>
 				<th>아이디</th>
+				<th>비밀번호</th>
 				<th>이름</th>
 				<th>생년월일</th>
 				<th>생성날짜</th>
 				<th>전화번호</th>
-				<th>주소</th>
+				<th>주소</th>	
 				<th>이메일</th>	
+				<th>회원구분</th>	
 		</tr>
 		</thead>
 	</table>
-	<table id="output">
+	<table id="output1">
 		<tbody>
 			<tr>
 				<th>아이디</th>
+				<th>비밀번호</th>
 				<th>이름</th>
 				<th>생년월일</th>
 				<th>생성날짜</th>
 				<th>전화번호</th>
-				<th>주소</th>
-				<th>이메일</th>
+				<th>주소</th>	
+				<th>이메일</th>	
+				<th>회원구분</th>	
 			</tr>
 		</tbody>
 	</table>
 
-		<button onclick="">주문관리</button>
+	<!-- 	<button onclick="a2();">주문관리</button>
 		<table >
 		<thead>
 		<tr>
@@ -105,7 +109,7 @@ ADMIN
 				<th>ㅁㅁ</th>
 				<th>ㅁㅁ</th>
 				<th>ㅁㅁ</th>
-				<!-- 배송현황 ERD가 없는듯 하다 -->		
+				배송현황 ERD가 없는듯 하다		
 		</tr>
 		</thead>
 	</table>
@@ -123,7 +127,7 @@ ADMIN
 	</table>	
 		
 		
-		<button onclick="">예약관리</button>
+		<button onclick="a3();">예약관리</button>
 		<table>
 		<thead>
 		<tr>
@@ -135,7 +139,6 @@ ADMIN
 				<th>예약시작일</th>
 				<th>총금액</th>
 				<th>작물</th>
-				<!--  -->
 		</tr>
 		</thead>
 	</table>
@@ -153,7 +156,7 @@ ADMIN
 			</tr>
 		</tbody>
 	</table>
-		
+		 -->
 		
 		
 		
@@ -175,25 +178,25 @@ ADMIN
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-		<!-- <script>
+		 <script>
 			function a1(){
 				$.ajax({
-					url:"../ajaxAll.me",
+					url:"adminList.do",
 					success:function(result){
 						console.log(result);
 						let value = "";
+						type = "post"
 						for(let i=0; i<result.length; i++)
 							value += "<tr>"
-							+ "<th>" + result[i].id + "</th>"
-							+ "<th>" + result[i].pwd + "</th>"
-							+ "<th>" + result[i].name + "</th>"
-							+ "<th>" + result[i].gender  + "</th>"
-							+ "<th>" + result[i].birthday + "</th>"
-							+ "<th>" + result[i].email + "</th>"
-							+ "<th>" + result[i].zipcode + "</th>"
-							+ "<th>" + result[i].address + "</th>"
-							+ "<th>" + result[i].datailaddress + "</th>"
-							+ "<th>" + result[i].job + "</th>"
+							+ "<th>" + result[i].mid + "</th>";
+							+ "<th>" + result[i].mpwd + "</th>";
+							+ "<th>" + result[i].mname + "</th>";
+							+ "<th>" + result[i].mbirth + "</th>";
+							+ "<th>" + result[i].mcreate + "</th>";
+							+ "<th>" + result[i].mtel + "</th>";
+							+ "<th>" + result[i].maddr + "</th>";
+							+ "<th>" + result[i].memail + "</th>";
+							+ "<th>" + result[i].mstatus + "</th>";						
 							+ "</tr>";
 							$("#output1").html(value);	
 					},
@@ -203,11 +206,11 @@ ADMIN
 				});
 			}
 		</script>
-		
+		<!-- 
 		<script>
 			function a2(){
 				$.ajax({
-					url:"../ajaxAll.me",
+					url:"${pageContext.request.contextPath}/member/adminAll????",
 					success:function(result){
 						console.log(result);
 						let value = "";
@@ -236,7 +239,7 @@ ADMIN
 		<script>
 			function a3(){
 				$.ajax({
-					url:"../ajaxAll.me",
+					url:"${pageContext.request.contextPath}/member/",
 					success:function(result){
 						console.log(result);
 						let value = "";
@@ -260,9 +263,9 @@ ADMIN
 					}	
 				});
 			}
-		</script>
+		</script> -->
 		
- -->
+
 
 
 

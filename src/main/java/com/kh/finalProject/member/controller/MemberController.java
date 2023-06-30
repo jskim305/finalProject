@@ -1,5 +1,7 @@
 package com.kh.finalProject.member.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -30,6 +32,36 @@ public class MemberController {
 	
 	@GetMapping("/loginMember.me")
 	public void loginMember() {}
+	
+	
+	@RequestMapping("/adminList.me")
+	public void adminList() {}
+	
+	
+	
+	@GetMapping("/adminList.do")
+	public String adminList(Model model) {
+		List<Member> adminList = memberService.selectadminList();
+		model.addAttribute("adminList",adminList);
+		return "member/adminList";
+		
+		
+		
+	}
+	
+	/*
+	 * @GetMapping("/devList.do") public String devList(Model model) { // 순서
+	 * controller -> service(Impl) -> Dao(Impl) -> demo-mapper.xml
+	 * 
+	 * List<Dev> devList = demoService.selectDevList(); //서비스에서 가져올 값
+	 * System.out.println("devList = " + devList);
+	 * 
+	 * 
+	 * model.addAttribute("devList",devList); return "demo/devList"; }
+	 */
+
+	
+	
 	
 	@PostMapping("/memberEnroll.me")
 	public String memberEnroll(Member member) {

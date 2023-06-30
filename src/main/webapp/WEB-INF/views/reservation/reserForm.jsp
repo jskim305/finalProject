@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>    
 <!DOCTYPE html>
 <html>
 <meta charset="UTF-8">
@@ -8,7 +11,7 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
 <style>
-    body {background-color: #f5f5f5;font-family: Arial, sans-serif;}
+    body {font-family: Arial, sans-serif;}
     .form-container {
         max-width: 800px;
         margin: 0 auto;
@@ -108,28 +111,28 @@
                 <input type="text" id="crop1" name="crop" placeholder="예시) 감자" readonly>
             </div>
         </div>
-        <h3>예약 정보</h3>
+        <h3>예약 정보</h3><small>*수정불가</small>
         <div class="form-row">
             <div class="form-col">
                 <label for="name">예약자명</label>
-                <input type="text" id="rno" name="name" readonly>
+             	<input type="text" id="" name="" value="${loginMember.MId}" readonly >
             </div>
 
             <div class="form-col">
                 <label for="phone_number">전화번호</label>
-                <input type="tel" id="phone_number" name="phone_number" readonly>
+                <input type="tel" id="" name="phone_number" value="${loginMember.MTel}" readonly>
             </div>
         </div>
 
         <div class="form-row">
             <div class="form-col">
                 <label for="address">예약자 주소</label>
-                <input type="text" id="address" name="address" readonly>
+                <input type="text" id="address"  name="address" value="${loginMember.MAddr }" readonly>
             </div>
 
             <div class="form-col">
                 <label for="email">이메일</label>
-                <input type="email" id="email" name="email" readonly>
+                <input type="email" id="email" name="email" value="${loginMember.MEmail }" readonly>
             </div>
         </div>
 
@@ -144,15 +147,14 @@
     <!--예약자의 정보가 insert 되어지는값  -->
     <form action="${pageContext.request.contextPath}/reservation/reserInsert.do" method="post" onsubmit="return check()">
     <div class="form-row">
-    	<input type="text" value="" name="rNo" placeholder="예약번호">
-    	<input type="text" value="" name="mId" placeholder="예약자id">
-    	<input type="text" value="" name="fNo" placeholder="농장번호">
-    	<input type="text" value="" name="rZone" placeholder="예약구역">
-    	<input type="text" value="" name="rStatus" placeholder="예약가능상태">
-    	<input type="text" value="" name="rStart" placeholder="예약시작일">
-    	<input type="text" value="" name="rPrice" placeholder="총금액">
-    	<input type="text" value="" name="rItem" placeholder="키울작물">
-    	    
+    	<input type="hidden" value="" name="rNo" placeholder="예약번호">
+    	<input type="hidden" value="${loginMember.MId}" name="mId" placeholder="예약자id">
+    	<input type="hidden" value="" name="fNo" placeholder="농장번호">
+    	<input type="hidden" value="" name="rZone" placeholder="예약구역">
+    	<input type="hidden" value="" name="rStatus" placeholder="예약가능상태">
+    	<input type="hidden" value="" name="rStart" placeholder="예약시작일">
+    	<input type="hidden" value="" name="rPrice" placeholder="총금액">
+    	<input type="hidden" value="" name="rItem" placeholder="키울작물">
    <!-- <input type="hidden" placeholder="예약번호">
     	<input type="hidden" placeholder="예약자id">
     	<input type="hidden" placeholder="농장번호">
@@ -187,8 +189,9 @@
     
     
 </div>
-<div id="map" style="width:500px;height:400px;">
-<div id="map" style="width:500px;height:400px;"></div>
+<div id="map" style="width:500px;height:400px; margin: auto;">
+<div id="map" style="width:500px;height:400px;margin: auto; ">
+</div>
 
 
 

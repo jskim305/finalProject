@@ -48,7 +48,7 @@
                     <a href="${pageContext.request.contextPath}/member/memberAll.me"> 마이페이지</a>
                 </c:if>
                 <c:if test="${not empty loginMember && loginMember.admin eq 1}">
-                    <a href="${pageContext.request.contextPath}/member/adminAll.me">관리자페이지</a>
+                    <a href="${pageContext.request.contextPath}/member/adminList.me">관리자페이지</a>
                  </c:if>
        		</div>
 			<div class="logo">

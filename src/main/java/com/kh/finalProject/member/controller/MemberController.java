@@ -68,7 +68,6 @@ public class MemberController {
 	public String loginMember(String memId, String memPwd, Model model, RedirectAttributes redirectAttr) {
 		// 입력된 id로 member table에서 select
 		Member member = memberService.seletOneMember(memId);
-		System.out.println(member);
 		
 		if(member == null) {
 			redirectAttr.addFlashAttribute("msg", "없는 ID 입니다.");

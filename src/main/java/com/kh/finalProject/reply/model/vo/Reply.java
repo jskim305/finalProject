@@ -14,9 +14,9 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class Reply {
-	private int rNo;
-	private int bNo;
-	private String rWriter;
-	private String rContent;
-	private Date rCreate;
+	private int replyNo;
+	private int boardNo;
+	private String replyWriter;
+	private String replyContent;
+	private Date replyCreate;
 }

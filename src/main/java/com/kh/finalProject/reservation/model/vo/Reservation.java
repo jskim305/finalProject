@@ -11,12 +11,12 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Reservation {
 
-	private int rNo;
-	private String mId;
-	private int fNo;
-	private String rZone;
-	private int rStatus;
-	private int rStart;
-	private int rPrice;
-	private String rItem;
+	private int rezNo;
+	private String memId;
+	private int farmNo;
+	private String rezZone;
+	private int rezStatus;
+	private int rezStart;
+	private int rezPrice;
+	private String rezItem;
 }

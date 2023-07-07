@@ -14,9 +14,9 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class Review {
-	private int rNo;
-	private int iNo;
-	private String rWriter;
-	private String rContent;
-	private Date rCreate;
+	private int reviewNo;
+	private int itemNo;
+	private String reviewWriter;
+	private String reviewContent;
+	private Date reviewCreate;
 }

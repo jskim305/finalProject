@@ -1,24 +1,28 @@
 @charset "UTF-8";
 
-* { padding: 0; margin: 0; }
-
-html, body {
+#login-from {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   height: 75%;
-  background: #ffffff;
 }
 
 #container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
+  width: 300px;
+  margin: 0 auto;
 }
 
 #loginBox {
   width: 300px;
   text-align: center;
   background-color: #ffffff;
+  margin: 0 auto;
 }
 .input-form-box {
   border: 0px solid #ff0000;

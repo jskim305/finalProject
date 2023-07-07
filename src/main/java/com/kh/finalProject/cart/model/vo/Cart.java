@@ -12,9 +12,9 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class Cart {
-	private int cNo;
-	private String mId;
-	private int iNo;
-	private int cCount;
-	private int cPrice;
+	private int cartNo;
+	private String memId;
+	private int itemNo;
+	private int cartCount;
+	private int cartPrice;
 }

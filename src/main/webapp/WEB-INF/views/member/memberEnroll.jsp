@@ -50,37 +50,38 @@
 </head>
 
 <body>
-<form action="${pageContext.request.contextPath}/member/memberEnroll.me" method="post">
+<%-- <form action="${pageContext.request.contextPath}/member/memberEnroll.me" method="post"> --%>
   <div class="container">
     <div class="input-form-backgroud row">
       <div class="input-form col-md-12 mx-auto">
         <h4 class="mb-3">회원가입</h4>
-        <form class="validation-form" name="form" method="post" action="joinProc.jsp">
+<!--         <form class="validation-form" name="form" method="post" action="joinProc.jsp"> -->
+		<form action="${pageContext.request.contextPath}/member/memberEnroll.me" method="post">
           <div class="row">
           
             <div class="col-md-6 mb-3">
               <label for="mName">이름</label>
-              <input type="text" class="form-control" id="mName" name="mName" placeholder="" required>
+              <input type="text" class="form-control" id="mName" name="memName" placeholder="" required>
             </div>
             
             <div class="col-md-6 mb-3">
               <label for="mBirth">생년월일</label>
-              <input type="text" class="form-control" id="mBirth" name="mBirth"  placeholder="yymmdd" required>
+              <input type="text" class="form-control" id="mBirth" name="memBirth"  placeholder="yymmdd" required>
             </div>
             
             <div class="col-md-6 mb-3">
               <label for="mId">사용할 ID</label>
-              <input type="text" class="form-control" id="mId" name="mId" placeholder="영,숫자포함 최대 20글자" required>
+              <input type="text" class="form-control" id="mId" name="memId" placeholder="영,숫자포함 최대 20글자" required>
             </div>
             
             <div class="col-md-6 mb-3">
               <label for="mTel">전화번호</label>
-              <input type="tel" class="form-control" id="mTel" name="mTel"  placeholder="010-1234-5678" required>
+              <input type="tel" class="form-control" id="mTel" name="memTel"  placeholder="010-1234-5678" required>
             </div>
             
             <div class="col-md-6 mb-3">
               <label for="mPwd">비밀번호</label>
-              <input type="password" class="form-control" id="mPwd" name="mPwd" placeholder="영,숫자,특수기호 포함 최대 20글자" required>
+              <input type="password" class="form-control" id="mPwd" name="memPwd" placeholder="영,숫자,특수기호 포함 최대 20글자" required>
             </div>
              
             <div class="col-md-6 mb-3">
@@ -91,12 +92,12 @@
 
           <div class="mb-3">
             <label for="mAddr">주소</label>
-            <input type="text" class="form-control" id="mAddr" name="mAddr"  placeholder="상세주소 포함" required>
+            <input type="text" class="form-control" id="mAddr" name="memAddr"  placeholder="상세주소 포함" required>
           </div>
 
           <div class="mb-3">
           	<label for="mEmail">EMAIL</label>
-            <input type="email" class="form-control" id="mEmail" name="mEmail"  placeholder="abc@gmail.com">
+            <input type="email" class="form-control" id="mEmail" name="memEmail"  placeholder="abc@gmail.com">
           </div>
           
           <hr class="mb-4">

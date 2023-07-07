@@ -9,15 +9,16 @@
 	<insert id="insertMember">
 		insert into member
 			values(
-				#{mId},
-				#{mPwd},
-				#{mName},
-				#{mBirth},
+				#{memId},
+				#{memPwd},
+				#{memName},
+				#{memBirth},
 				default,
-				#{mTel},
-				#{mAddr},
-				#{mEmail},
+				#{memTel},
+				#{memAddr},
+				#{memEmail},
 				default,
+				to_date('01/01/01','RR/MM/DD'),
 				default
 			)
 	</insert>
@@ -25,8 +26,32 @@
 	<select id="selectOneMember" resultMap="memberMap">
 		select *
 		  from member
-		 where M_ID = #{mId}
+		 where MEM_STATUS = 'Y'
+		   and MEM_ID = #{memId}
 	</select>
+	
+	<update id="changePwd" parameterType="map">
+		update member
+		   set MEM_PWD = #{pwd}
+	     where MEM_STATUS = 'Y'
+	       and MEM_ID = #{id}
+	</update>
+	
+	<update id="editMyPage">
+		update member
+		   set MEM_TEL = #{memTel},
+		   	   MEM_ADDR = #{memAddr},
+		   	   MEM_EMAIL = #{memEmail}
+   	     where MEM_STATUS = 'Y'
+   	       and MEM_ID = #{memId}
+	</update>
+	
+	<update id="delMem">
+		update member
+		   set MEM_STATUS = 'N',
+		   	   MEM_DELDATE = SYSDATE
+		 where MEM_ID = #{memId}
+	</update>
 	
 
 </mapper>

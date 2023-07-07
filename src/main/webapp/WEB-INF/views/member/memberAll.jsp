@@ -150,12 +150,12 @@
 			document.querySelector(".form-row2").style.display = "none";
 			document.querySelector(".form-row3").style.display = "inline";
 	    });
-/* 	    
+	    
  	    document.querySelector("editMemInfoBtn2").addEventListener('click', (e) => {
  	    	frm.method = 'POST';
 			frm.action = '${pageContext.request.contextPath}/member/updateMem.me';
 			frm.submit();
-	    }); */
+	    });
     </script> 
     
 </div>

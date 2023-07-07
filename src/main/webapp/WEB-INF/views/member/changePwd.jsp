@@ -27,10 +27,12 @@
 				<!-- 아이디, 비번, 버튼 박스 -->
 				<div id="inputBox">
 					<span>새 비밀번호</span>
+					<span style="color: red; font-size: 14px;" id="ckPwd" ></span>
 					<div class="change-form-box">
 						<input type="password" name="memPwd" id="memPwd" class="form-control">
 					</div>
 					<span>다시 한번</span>
+					<span style="color: red; font-size: 14px;" id="ckRePwd" ></span>
 					<div class="change-form-box">
 						<input type="password" name="rePwd" id="rePwd" class="form-control">
 					</div>
@@ -58,6 +60,37 @@
 
 
 <script>
+
+	//PW 유효성검사
+	document.getElementById('memPwd').onkeyup = function() {
+		var msg = '';
+		var pwdExp = /^(?=.*?[a-zA-Z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,20}$/;
+		var memPwd = this.value;
+		
+		if(pwdExp.test(memPwd)){
+			document.getElementById('ckPwd').style.color="green";
+			document.getElementById('ckPwd').textContent = "사용 가능";
+		}
+		else{
+			document.getElementById('ckPwd').style.color="red";
+			document.getElementById('ckPwd').textContent = "사용 불가능";
+		}
+	}
+	
+	// rePW 유효성검사
+	document.getElementById('rePwd').onkeyup = function() {
+		var memPwd = document.getElementById('memPwd').value;
+		var rePwd = this.value;
+		
+		if(memPwd === rePwd){
+			document.getElementById('ckRePwd').style.color="green";
+		document.getElementById('ckRePwd').textContent = "동일 패스워드";
+		}
+		else{
+			document.getElementById('ckRePwd').style.color="red";
+		document.getElementById('ckRePwd').textContent = "잘못 입력되었습니다	";
+		}
+	}
 
 	document.querySelector("#changePwd").addEventListener("click", (e) =>{
 		

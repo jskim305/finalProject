@@ -1,5 +1,5 @@
 /**
- * 
+ * 이 내용들을 memberEnroll에 다 넣어버리고 이 파일은 사용을 안함
  */
 
  // name, id, pw 정규표현식 검사
@@ -35,11 +35,11 @@
  }
  
  function checkName(){
-	 var nameExp = /^[가-힣]{2,4}$/;
+	 var nameExp = /^[가-힣]{2,6}$/;
 	 
-	 if(!nameExp.test(form.name.value)){
-		form.name.value = "";
-		form.name.focus();
+	 if(!nameExp.test(form.memName.value)){
+		form.memName.value = "";
+		form.memName.focus();
 		
 		return false;
 	 }
@@ -47,19 +47,25 @@
 	 return true;
  }
  
- function checkBirth(birth){
-	 
-	 var birthExp = /^\d{2}(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])$/;
-	 
-	 if(!birthExp.test(birth)){
-		 form.birth.value="";
-		 form.birth.focus();
-		 
-		 return false;
-	 }
+function checkBirth(memBirth){
+	
+	var birthExp = /^\d{2}(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])$/;
+	
+	if(birthExp.test(memBirth)){
+		form.ckBirth.value="사용가능";
+		form.ckBirth.style.color="green";
+	}
+	
+	if(!birthExp.test(memBirth)){
+		form.ckBirth.value="사용불가";
+		form.memBirth.value="";
+		form.memBirth.focus();
+		
+		return false;
+	}
 
-	 return true;
- }
+	return true;
+}
  
  function checkUserId(inputId){
 	 var idExp = /^[a-z][a-z0-9]{3,19}$/i;

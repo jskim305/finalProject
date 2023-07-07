@@ -43,16 +43,17 @@ header .top-links {
 	display: inline-block;
 	margin: 0 5px;
 	float: right;
-	width: 30%;
+	width: 35%;
 	padding-bottom: 0px;
 }
 
 header .top-links a {
 	margin: 5px;
 	color: black;
+	float: right;
 	font-size: x-small;
 	font-weight: bold;
-	align: left;
+	align :left;
 }
 header .logo {
 	width: 200px;
@@ -75,13 +76,13 @@ header .middle-links {
 }
 
 .middle-nav>li {
-   display: inline-block;
-   list-style: none;
-   width: 100px;
-   text-align: center;
-   padding: 5px 0;
-   position: relative;
-   float: right;
+	display: inline-block;
+	list-style: none;
+	width: 100px;
+	text-align: center;
+	padding: 5px 0;
+	position: relative;
+	float: right;
 }
 
 .navimg {
@@ -91,12 +92,18 @@ header .middle-links {
 }
 /*sidebar--------------------------------------------*/
 aside {
-	width : 200px;
+	width : 150px;
 	height: 1000px;
 	background: #f9f9f9;
 	display: inline-block;
 	float: left;
 	margin: 20px 0;
+}
+aside>.sidebar li,h3 {
+	margin: 20px;
+	font-size: small;
+	
+	
 }
 /*main----------------------------------------------*/
 .main {
@@ -104,7 +111,6 @@ aside {
 	width : 700px;
 	height: 1000px;
 	background: #fff;
-
 	margin: 20px 0;
 }
 
@@ -112,8 +118,8 @@ aside {
 	display: inline-block;
 	float: left;
 	background: #f9f9f9;
-
-	padding: 20px;    width: 193px;
+	padding: 20px;    
+	width: 193px;
 }
 
 .main>.card img {

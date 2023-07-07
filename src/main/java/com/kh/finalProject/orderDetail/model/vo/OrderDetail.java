@@ -12,9 +12,10 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrderDetail {
-	private int odNo;
-	private String oNo;
-	private int iNo;
-	private int odPrice;
-	private int odCount;
+	private int detailNo;
+	private int ordersNo;
+	private int itemNo;
+	private int detailPrice;
+	private int detailCount;
+	private String itemName;
 }

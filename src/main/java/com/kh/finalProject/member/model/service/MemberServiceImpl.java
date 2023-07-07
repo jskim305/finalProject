@@ -21,4 +21,24 @@ public class MemberServiceImpl implements MemberService{
 	public Member seletOneMember(String mId) {
 		return memberDao.selectOneMember(mId);
 	}
+
+	@Override
+	public int checkPwd(String mPwd) {
+		return memberDao.checkPwd(mPwd);
+	}
+
+	@Override
+	public int changePwd(String id, String pwd) {
+		return memberDao.changePwd(id, pwd);
+	}
+
+	@Override
+	public int editMyPage(Member member) {
+		return memberDao.editMyPage(member);
+	}
+
+	@Override
+	public int delMem(String memId) {
+		return memberDao.delMem(memId);
+	}
 }

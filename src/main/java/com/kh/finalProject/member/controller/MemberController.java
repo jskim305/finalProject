@@ -1,5 +1,7 @@
 package com.kh.finalProject.member.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -47,6 +50,9 @@ public class MemberController {
 	
 	@GetMapping("delMem.me")
 	public void delMem() {}
+	
+	@RequestMapping("/adminList.me")
+	public void adminLis() {}
 	
 	/*--------------------------------------------------*/	
 	@PostMapping("/memberEnroll.me")
@@ -170,6 +176,32 @@ public class MemberController {
 		redirectAttr.addFlashAttribute("msg", "회원탈퇴 실패");
 		return "history.back();";
 	}
+	
+//---------------------------관리자페이지-----------------------------------	
+//	전체회원조회
+	  @GetMapping("/list") 
+	  public String getMemberList(Model model) { 
+		  List<Member> list = memberService.getMembers(); 
+		  model.addAttribute("list", list );
+		  return "jsonView"; 
+	  }
+// 회원삭제
+	  @PostMapping("/adminDrop.my")
+	    @ResponseBody
+	    public String deleteMember(@RequestParam("memId") String memId) {
+	        memberService.deleteMember(memId);
+	        return "success";
+	    }
+// 회원수정
+	  @PostMapping("/adminMemberUpdate.do")
+	  @ResponseBody
+		public String adminMemberUpdate(Member member) {
+		  System.out.println(member);
+		  int result = memberService.adminMemberUpdate(member);
+		  System.out.println("result : " + result);
+		  return "success";
+	  }
+//---------------------------관리자페이지-----------------------------------
 	
 	
 } // end of class

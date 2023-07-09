@@ -53,5 +53,27 @@
 		 where MEM_ID = #{memId}
 	</update>
 	
+	<!--관리자 mapper-->	
+    <select id="selectMembers" resultMap="memberMap">
+        SELECT * 
+        FROM member
+    </select>
+    
+    <delete id="deleteMember">
+        DELETE 
+        FROM member
+        WHERE MEM_ID = #{memId}
+    </delete>
+    
+    <update id="adminMemberUpdate">
+    update member
+    set MEM_NAME = #{memName},
+        MEM_BIRTH = #{memBirth},
+        MEM_TEL = #{memTel},
+        MEM_ADDR = #{memAddr},
+        MEM_EMAIL = #{memEmail}
+    where MEM_ID = #{memId}
+	</update>
+	<!--관리자 mapper-->
 
 </mapper>

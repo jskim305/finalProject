@@ -1,5 +1,7 @@
 package com.kh.finalProject.member.model.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -19,5 +21,14 @@ public interface MemberDao {
 	int editMyPage(Member member);
 
 	int delMem(String memId);
+	
+//관리자부분----------------
+	List<Member> selectMembers();
+	
+	void deleteMember(String memId);
+	
+	int adminMemberUpdate(Member member);
+	
+//관리자 end----------------	
 
 }

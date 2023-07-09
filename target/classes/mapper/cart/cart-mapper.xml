@@ -4,5 +4,34 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="com.kh.finalProject.cart.model.dao.CartDao">
-
+	<resultMap type="cart" id="cartMap" >
+	
+	</resultMap>
+	<resultMap type="cartList" id="cartListMap"></resultMap>
+	
+	<insert id="insertCart">
+	insert into
+	  cart
+	values (
+		seq_cart.nextval,
+		#{memId},
+		#{itemNo},
+		#{cartCount},
+		#{cartPrice}
+	)
+	</insert>
+	
+	<select id="mycartList" resultMap="cartListMap">
+	    SELECT *
+	    FROM CART
+	    NATURAL JOIN ITEM
+        WHERE MEM_ID = #{memId}
+	</select>
+	
+	<delete id="deleteCart">
+		DELETE
+		FROM CART
+		WHERE CART_NO = #{cartNo}
+    </delete>
+		
 </mapper>

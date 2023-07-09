@@ -4,5 +4,56 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="com.kh.finalProject.board.model.dao.BoardDao">
+  
+	<resultMap type="board" id="boardMap"></resultMap>
+	
+	<select id="selectBoardList" resultMap="boardMap">
+		select *
+		  from board
+		 order by board_no desc 
+	</select>
+	
+	<select id="selectTotalRecord" resultType="_int">
+		select count(*)
+		  from board
+	</select>
+	
+	<insert id="insertBoard">
+		insert into board
+		values(
+		seq_board.nextval,
+		#{boardWriter},
+		#{boardTag},
+		#{boardTitle},
+		#{boardContent},
+		default,
+		default
+		)
+	   </insert>
+		
+	 <update id="updateCountBoard">
+	  update board
+	  set board_Count = board_count +1 
+	  where board_No = #{boardNo}
+	</update>
+	
+	<select id="selectOneBoard" resultMap="boardMap">
+	       select *
+	          from board
+	         where board_No = #{boardNo}
+	    </select>
+	    
+	    <delete id = "deleteOneBoard">
+	      delete from board
+	      where board_No = #{boardNo}
+	    </delete>
+	  
+	 <update id="updateOneBoard">
+	    update board
+	    set 
+	    	board_Title = #{boardTitle},
+	        board_Content = #{boardContent}
+	    where board_No = #{boardNo}
+	</update>
 
 </mapper>

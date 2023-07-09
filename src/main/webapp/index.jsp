@@ -5,7 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <jsp:include page="/WEB-INF/views/common/header.jsp">
-	<jsp:param value="vegform" name="title" />
+	<jsp:param value="vegfarm" name="title" />
 </jsp:include>
 
 	<img src="${pageContext.request.contextPath}/resources/images/v29_3.png" class="navimg" alt="Header Image">

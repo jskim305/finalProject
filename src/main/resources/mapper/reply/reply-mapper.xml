@@ -5,4 +5,16 @@
  
 <mapper namespace="com.kh.finalProject.reply.model.dao.ReplyDao">
 
+
+	<insert id="createReply">
+	   INSERT INTO reply
+			VALUES (
+		       seq_reply.nextval,
+		       #{boardNo}, 
+		       #{replyWriter}, 
+		       #{replyContent}, 
+		       default
+			)
+	</insert>
+
 </mapper>

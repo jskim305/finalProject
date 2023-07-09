@@ -1,5 +1,7 @@
 package com.kh.finalProject.member.model.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,4 +43,19 @@ public class MemberServiceImpl implements MemberService{
 	public int delMem(String memId) {
 		return memberDao.delMem(memId);
 	}
+	
+//관리자--------------------
+	@Override
+	 public List<Member> getMembers() {
+	        return memberDao.selectMembers();
+	    }
+	@Override
+	public void deleteMember(String memId) {
+		  memberDao.deleteMember(memId);
+	}
+	@Override
+	public int adminMemberUpdate(Member member) {
+		return memberDao.adminMemberUpdate(member);
+	}
+//관리자 end--------------------	
 }

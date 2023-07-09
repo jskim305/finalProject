@@ -1,0 +1,87 @@
+.cartList-main  {
+	width:1000px;
+	height:1000px;
+	text-align:center;
+	margin: 0 auto;
+}
+/*아이템 메인페이지 로고*/
+.cart-logo {
+    display: flex;
+    width: 90%;
+    margin: 40px auto;
+    border-radius: 8px;
+    background: #fafafa;
+    align-items: center;
+    padding: 30px 10px 30px 30px;
+    position: relative;
+}
+
+.cart-logo-text span {
+  width: 100px;
+  height: 50px;
+  padding: 10px;
+  margin: 5px;
+  font-size: 20px;
+}
+
+.cart-logo-text{
+ 	display: flex;
+  	align-items: center;
+  	justify-content: flex-start; 	
+}
+/*장바구니 테이블*/
+.cart-table {
+    margin: auto;
+	border-collapse: collapse;
+}
+
+.cart-table td, th {
+	border: 2px solid #eee;
+	padding: 8px;
+}
+.cart-table td:first-child {
+	width: 100px;
+	height: 80px;
+}
+.cart-table td:first-child>img {
+	width: 100px;
+	height: 80px;
+}
+
+/* 두 번째 td에 스타일 적용 */
+.cart-table td:nth-child(2) {
+	width: 370px;
+}
+
+/* 세 번째 td에 스타일 적용 */
+.cart-table td:nth-child(3) {
+	width: 170px;
+}
+
+/* 마지막 td에 스타일 적용 */
+.cart-table td:last-child {
+	width: 170px;
+}
+.buy-button{
+	display: block;
+    width: 100%;
+    padding-top: 1px;
+    height: 34px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    font-size: 12px;
+    font-family: "Spoqa-Bold", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", Arial, sans-serif !important;	
+}
+.remove-button{
+	display: block;
+    width: 100%;
+    padding-top: 1px;
+    height: 34px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    font-size: 12px;
+    background-color: #ff3e3e;
+    border-color: #ff3e3e;
+    color: #fff;
+    font-family: "Spoqa-Bold", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", Arial, sans-serif !important;
+}

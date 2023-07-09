@@ -27,26 +27,32 @@
 				<c:if test="${empty loginMember}">
           			<a href="${pageContext.request.contextPath}/member/loginMember.me" >로그인</a>
          		</c:if>
+         		
          		<c:if test="${not empty loginMember}">
          			<a href="${pageContext.request.contextPath}/member/memberLogout.me" >로그아웃</a>
          		</c:if>
          		<a>|</a>
+         		
          		<c:if test="${not empty loginMember && loginMember.admin eq 0}">
-	            	<a href="#">장바구니</a>
+	            	<a href="${pageContext.request.contextPath}/cart/myCart.ca?memId=${loginMember.memId}" >장바구니</a>
 	             	<a>|</a>
              	</c:if>
+             	
              	<c:if test="${empty loginMember}">
 	           		<a href="${pageContext.request.contextPath}/member/memberEnroll.me"> 회원가입</a>
              	</c:if>
+             	
              	<c:if test="${not empty loginMember && loginMember.admin eq 0}">
            			<a href="#">내역확인</a>
            		</c:if>
+           		
            		<c:if test="${not empty loginMember && loginMember.admin eq 0}">
            			<a>|</a>
 	           		<a href="${pageContext.request.contextPath}/member/checkPwd.me"> 마이페이지</a>
              	</c:if>
+             	
              	<c:if test="${not empty loginMember && loginMember.admin eq 1}">
-           			<a href="${pageContext.request.contextPath}/member/adminAll.me">관리자페이지</a>
+           			<a href="${pageContext.request.contextPath}/member/adminList.me">관리자페이지</a>
            		</c:if>
            		
        		</div>
@@ -57,38 +63,22 @@
 			<div class="middle-links">
        			<ul class="middle-nav">
 	            	<li><a href="#">공지사항</a></li>
-	            	<li><a href="#">게시판</a></li>
-	            	<li><a href="#">농지예약</a></li>
+	            	
 	            	<li>
-	            		<a href="${pageContext.request.contextPath}/item/packageList2.bo">패키지</a>
+	            		<a href="${pageContext.request.contextPath}/board/boardList.bo">게시판</a>
             		</li>
-	            	<li><a href="#">상품판매</a></li>
+            		
+	            	<li>
+	            		<a href="${pageContext.request.contextPath}/item/paclist.bo">패키지</a>
+            		</li>
+            		
+	            	<li>
+	            		<a href="${pageContext.request.contextPath}/item/itemlist.bo">상품판매</a>
+	            	</li>
+	            	
            		 	<li><a href="#">베지팜소개</a></li>
-           			 <!-- <li><a href="#" hidd>로그인전용 또는 관리자전용페이지</a></li> -->
             	</ul>
 			</div>
 		</div>
 	</header>
-<%-- 	<img src="${pageContext.request.contextPath}/resources/images/v29_3.png" class="navimg" alt="Header Image"> --%>
 
-	
-	 <script>
-		/* document.querySelector("#memberEnroll").addEventListener('click', (e)=> {
-			window.open(
-				"${pageContext.request.contextPath}/WEB-INF/views/member/memberEnroll.jsp",
-				"회원가입",
-				"width=500, height=300, top=50, left=50"	
-			); 
-			
-			location.href='${pageContext.request.contextPath}/member/memberEnroll.me';
-		}); */
-		/*
- 		function openNewWindow(){
-			window.open("http://www.naver.com", "_blank");
-			 window.open(
-				"${pageContext.request.contextPath}/WEB-INF/views/member/memberEnroll.jsp",
-				"회원가입",
-				"width=500, height=300, top=50, left=50"
-			);
-		} */
-	</script>

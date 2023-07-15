@@ -24,15 +24,16 @@
 	<jsp:param value="packagemain" name="title" />
 </jsp:include>  
 	<main class="itemList-main">	
-		<button class="insert-btn" onclick="location.href='${pageContext.request.contextPath}/item/insertList.bo'">글쓰기</button>
+		<c:if test="${loginMember.admin =='1'}">
+    <button class="ListInsert-btn" onclick="location.href='${pageContext.request.contextPath}/item/insertList.bo?itemType=item'">글쓰기</button>
+		</c:if>
 		<c:forEach items="${itemlist}" var="item">
-			<a href="${pageContext.request.contextPath}/item/itemForm.bo?INo=${item.itemNo}" >
+			<a href="${pageContext.request.contextPath}/item/itemForm.bo?itemNo=${item.itemNo}" >
 				<div class="card">
 					<img src="${pageContext.request.contextPath}/resources/images/itemlogo/${item.itemLogo}" alt="logo"> 
 					<h5>${item.itemName}</h5>
 					<p>${item.itemLocal}</p>
-					<p><fmt:formatNumber value="${item.itemPrice}" pattern="#,###"/>원</p>
-						
+					<p><fmt:formatNumber value="${item.itemPrice}" pattern="#,###"/>원</p>						
 				</div>
 			</a>	
 		</c:forEach>

@@ -39,11 +39,7 @@
 			</li>
 			<li><a href="${pageContext.request.contextPath}/item/findItems.bo?category=곡물">곡물</a>
 				<ul class="subBar">
-					<li><a href="${pageContext.request.contextPath}/item/findItems.bo?category=백미">백미</a></li>
-					<li><a href="${pageContext.request.contextPath}/item/findItems.bo?category=흑미">흑미</a></li>
-					<li><a href="${pageContext.request.contextPath}/item/findItems.bo?category=찹쌀">현미</a></li>
-					<li><a href="${pageContext.request.contextPath}/item/findItems.bo?category=흑미">흑미</a></li>
-					<li><a href="${pageContext.request.contextPath}/item/findItems.bo?category=콩류">콩류</a></li>
+					<li><a href="${pageContext.request.contextPath}/item/findItems.bo?category=쌀">쌀</a></li>
 					<li><a href="${pageContext.request.contextPath}/item/findItems.bo?category=깨">깨</a></li>
 				</ul>
 			</li>

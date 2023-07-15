@@ -4,28 +4,32 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="com.kh.finalProject.cart.model.dao.CartDao">
-	<resultMap type="cart" id="cartMap" >
-	
-	</resultMap>
-	<resultMap type="cartList" id="cartListMap"></resultMap>
+	<resultMap type="cart" id="cartMap" />	
+	<resultMap type="cartList" id="cartListMap" />
 	
 	<insert id="insertCart">
 	insert into
 	  cart
 	values (
-		seq_cart.nextval,
+		sql_cart_no.nextval,
 		#{memId},
 		#{itemNo},
-		#{cartCount},
-		#{cartPrice}
+		#{cartCount}
 	)
 	</insert>
 	
-	<select id="mycartList" resultMap="cartListMap">
+	<select id="cartItemList" resultMap="cartListMap">
 	    SELECT *
 	    FROM CART
 	    NATURAL JOIN ITEM
-        WHERE MEM_ID = #{memId}
+        WHERE MEM_ID = #{memId} and ITEM_PAC = 0
+	</select>
+	
+	<select id="cartPacList" resultMap="cartListMap">
+	    SELECT *
+	    FROM CART
+	    NATURAL JOIN ITEM
+        WHERE MEM_ID = #{memId} and ITEM_PAC = 1
 	</select>
 	
 	<delete id="deleteCart">
@@ -33,5 +37,64 @@
 		FROM CART
 		WHERE CART_NO = #{cartNo}
     </delete>
+    
+	<delete id="allDeleteCart" >
+		DELETE
+		FROM CART
+		WHERE MEM_ID = #{memId}
+    </delete>
 		
+	<update id="updateCart">
+		UPDATE CART
+		SET CART_COUNT = #{cartCount} 
+		WHERE CART_NO = #{cartNo}
+	</update>
+	
+	<!-- //장바구니 총 합계 -->
+	<select id="sumMoney" resultType="int">
+	    SELECT COALESCE(SUM(C.CART_COUNT * I.ITEM_PRICE), 0) AS money
+	    FROM CART C
+	    JOIN ITEM I ON C.ITEM_NO = I.ITEM_NO
+	    WHERE C.MEM_ID = #{memId}
+	</select>
+	<select id="sumpacMoney" resultType="int">
+	    SELECT COALESCE(SUM(C.CART_COUNT * I.ITEM_PRICE), 0) AS money
+	    FROM CART C
+	    JOIN ITEM I ON C.ITEM_NO = I.ITEM_NO
+	    WHERE C.MEM_ID = #{memId} AND ITEM_PAC = 1
+	</select>
+	<select id="sumitemMoney" resultType="int">
+	    SELECT COALESCE(SUM(C.CART_COUNT * I.ITEM_PRICE), 0) AS money
+	    FROM CART C
+	    JOIN ITEM I ON C.ITEM_NO = I.ITEM_NO
+	    WHERE C.MEM_ID = #{memId} AND ITEM_PAC = 0
+	</select>
+	
+	<!-- 장바구니에 같은 아이템 유무 비교하기 -->
+	<select id="getCartItem" resultMap="cartMap">
+	  SELECT *
+	  FROM CART
+	  WHERE MEM_ID = #{memId}
+	  AND ITEM_NO = #{itemNo}
+	</select>
+
+	<update id="updateCartQuantity">
+		UPDATE CART
+		SET CART_COUNT = #{cartCount}
+		WHERE MEM_ID = #{memId}
+    	AND ITEM_NO = #{itemNo}
+	</update>
+	
+	<select id="getItemData" resultMap="cartListMap">
+		select *
+		FROM ITEM
+		WHERE ITEM_NO = #{itemNo}
+	</select>
+	
+	<select id="payment" resultMap="cartListMap">
+	    SELECT *
+	    FROM CART C
+	    JOIN ITEM I ON C.ITEM_NO = I.ITEM_NO
+	    WHERE C.CART_NO = #{cartNo}	
+	</select>
 </mapper>

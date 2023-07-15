@@ -8,23 +8,19 @@ public interface ItemService {
 
 	List<Item> selectPacList();
 
-	Item selectOnePac(int INo);
+	Item selectOnePac(int itemNo);
 
 	List<Item> selectitemList();
 
-	List<Item> findlist1();
-
-	List<Item> findlist2();
-
-	List<Item> findlist3();
-
-	Item selectOneitem(int INo);
+	Item selectOneitem(int itemNo);
 
 	List<Item> findItemsByCategory(String category);
 
 	int insertItem(Item item);
 
 	void deleteItem(int itemNo);
+
+	int insertPac(Item item);
 
 	
 	//	List<Item> selectPackageList();

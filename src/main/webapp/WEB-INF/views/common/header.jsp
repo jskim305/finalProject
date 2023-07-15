@@ -33,6 +33,15 @@
          		</c:if>
          		<a>|</a>
          		
+         		
+         		<!-- --------------------------- 주문창 확인용코드 ------------------------------------ -->
+         		<c:if test="${not empty loginMember}">
+         			<a href="${pageContext.request.contextPath}/orders/ordersForm.or" >주문 test</a>
+         			<a>|</a>
+         		</c:if>
+         		<!-------------------------------------------------------------------------------  -->
+         		
+         		
          		<c:if test="${not empty loginMember && loginMember.admin eq 0}">
 	            	<a href="${pageContext.request.contextPath}/cart/myCart.ca?memId=${loginMember.memId}" >장바구니</a>
 	             	<a>|</a>
@@ -63,10 +72,13 @@
 			<div class="middle-links">
        			<ul class="middle-nav">
 	            	<li><a href="#">공지사항</a></li>
-	            	
-	            	<li>
-	            		<a href="${pageContext.request.contextPath}/board/boardList.bo">게시판</a>
-            		</li>
+					<li>
+						<a href="${pageContext.request.contextPath}/board/boardList.bo">게시판</a>
+					</li>
+
+					<li>
+						<a href="${pageContext.request.contextPath}/farm/indexFarm.do">농지예약</a>
+					</li>
             		
 	            	<li>
 	            		<a href="${pageContext.request.contextPath}/item/paclist.bo">패키지</a>

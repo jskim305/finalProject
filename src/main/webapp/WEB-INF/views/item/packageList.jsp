@@ -24,17 +24,20 @@
 			<%--<form action="${pageContext.request.contextPath}/item/packageList.bo" method="get"> --%>
 			
 			<!-- 	패키지 메인으로 돌아가는 코드 I PCA가 1인 리스트 모두 출력 클릭하면 PACKGEFORM이 우측에 페이지에 출력됨. -->
-		
-				<c:forEach items="${paclist}" var="pac">
-				<div class="package-card">
-					<img src="${pageContext.request.contextPath}/resources/images/itemlogo/${pac.itemLogo}" alt="logo">
-					<h2>${pac.itemName}</h2>
-					<p>${pac.itemPrice}원</p>
-					<div class="package-card-but">
-						<a href="${pageContext.request.contextPath}/item/pacForm.bo?INo=${pac.itemNo}">바로가기</a>
-					</div>
+						<c:forEach items="${paclist}" var="pac">
+							<div class="package-card">
+								<img src="${pageContext.request.contextPath}/resources/images/itemlogo/${pac.itemLogo}" alt="logo">
+								<h2>${pac.itemName}</h2>
+								<p><fmt:formatNumber value="${pac.itemPrice}" pattern="#,###"/>원</p>
+								<div class="package-card-but">
+									<a href="${pageContext.request.contextPath}/item/pacForm.bo?itemNo=${pac.itemNo}">바로가기</a>
+								</div>
+							</div>
+					</c:forEach>
 				</div>
-				</c:forEach>
+				<c:if test="${ loginMember.admin =='1'}">
+					<button class="ListInsert-btn" onclick="location.href='${pageContext.request.contextPath}/item/insertList.bo?itemType=package'">패키지추가</button>
+		   		</c:if>
 		
 			<div id="package-explanation" >
 				<div id="explanation-title">
@@ -55,7 +58,7 @@
 					src="${pageContext.request.contextPath}/resources/images/pexels-photo-98350981.jpeg"
 					alt="logo"> <a href=#>•심혈관계질환</a>
 			</div> --%>
-		</div>
+	
 	</main>
 </div>
 

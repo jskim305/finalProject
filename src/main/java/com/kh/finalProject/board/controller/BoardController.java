@@ -27,9 +27,6 @@ public class BoardController {
 	/**
 	 * 게시글 목록을 조회하는 메소드입니다.
 	 * 요청 시 현재 페이지 번호를 받아와서 해당 페이지에 해당하는 게시글 목록을 조회합니다.
-	 *
-	 * @param nowPage 현재 페이지 번호
-	 * @param model   Model 객체
 	 */
 	@GetMapping("/boardList.bo")
 	public void boardList(@RequestParam(defaultValue="1") int nowPage, Model model) {
@@ -52,29 +49,9 @@ public class BoardController {
 		model.addAttribute("pi", pi);
 	}
 	
-	/**
-	 * 게시글 작성 폼으로 이동하는 메소드입니다.
-	 * GET 방식으로 접근하며, 폼 페이지를 응답합니다.
-	 */
 	@GetMapping("/boardForm.bo")
 	public void boardForm() {}
 	
-
-	   
-	/**
-	 * 게시글 목록을 조회하는 메소드입니다.
-	 * GET 방식으로 접근하며, 목록 페이지를 응답합니다.
-	 */
-	@GetMapping("/boardList.do")
-	public void boardList() {}
-	
-	/**
-	 * 게시글을 등록하는 메소드입니다.
-	 * POST 방식으로 접근하며, 요청으로부터 받은 게시글 정보를 이용하여 게시글을 등록합니다.
-	 *
-	 * @param board 게시글 정보
-	 * @return 게시글 목록 페이지로의 리다이렉트 경로
-	 */
 	@PostMapping("/boardEnroll.bo")
 	public String boardEnroll(Board board) {
 		System.out.println(board);
@@ -85,14 +62,6 @@ public class BoardController {
 		return "redirect:/board/boardList.bo";
 	}
 	   
-	/**
-	 * 게시글 상세 정보를 조회하는 메소드입니다.
-	 * GET 방식으로 접근하며, 요청으로부터 받은 게시글 번호를 이용하여 해당 게시글의 상세 정보를 조회합니다.
-	 * 조회수도 증가시킵니다.
-	 *
-	 * @param bNo   조회할 게시글 번호
-	 * @param model Model 객체
-	 */
 	@GetMapping("/boardDetail.bo")
 	public void boardDetail(@RequestParam int boardNo, Model model) {
 		// 게시글의 조회수 증가
@@ -102,9 +71,7 @@ public class BoardController {
 		Board board = boardService.selectOneBoard(boardNo);
 		
 		// 모델에 게시글 정보를 담아서 전달
-		model.addAttribute("board", board);
-		
-		
+		model.addAttribute("board", board);	
 	}
 	
 	@GetMapping("/delete")

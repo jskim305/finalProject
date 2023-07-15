@@ -12,7 +12,7 @@
 			<a href=#><img  src="https://i.ibb.co/MP2Z85J/FA.png"></a>
 			<a href=#><img  src="https://i.ibb.co/7KKxXrn/UT.png" alt="UT" border="0"></a>
 			<a href=#><img  src="https://i.ibb.co/2S1GTgX/P.png" alt="P" border="0"></a>
-			<p style="text-align:left; color: aliceblue;">VEG FORM</p>
+			<p style="text-align:left; color: aliceblue;">VEG FARM</p>
 		</div>
 		<div>
 			<p style="font-size: small; color: rgba(240, 248, 255, 0.644);">

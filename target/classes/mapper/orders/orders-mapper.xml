@@ -3,6 +3,24 @@
   PUBLIC "//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
-<mapper namespace="com.kh.finalProject.order.model.dao.OrdersDao">
+<mapper namespace="com.kh.finalProject.orders.model.dao.OrdersDao">
+
+	<resultMap type="member" id="memberMap"></resultMap>
+
+	<insert id="insertOrders">
+		insert into orders
+			values(
+				seq_orders.nextval,
+				#{memId},
+				#{ordersPrice},
+				default,
+				#{ordersName},
+				#{ordersAddr},
+				#{ordersTel},
+				#{ordersReq},
+				#{ordersCount}
+			)
+	</insert>
+
 
 </mapper>

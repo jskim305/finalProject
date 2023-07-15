@@ -9,7 +9,7 @@
 
  
 <!-- 나의 스타일 추가 -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/changePwd.css?after">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/member/changePwd.css?v=<%System.currentTimeMillis(); %>">
 
 
 <jsp:include page="/WEB-INF/views/common/header.jsp">

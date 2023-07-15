@@ -61,9 +61,10 @@ aside {
 	text-align: center;
 }
 .itemList-main .card img {
+	 object-fit: cover;
 	width: 100%;
 	height: 160px;
-	object-fit: cover;
+	
     border-radius: 20px 20px 20px 20px;
 }
 
@@ -81,9 +82,20 @@ aside {
 	width: 1200px;
 	height: 1500px;
 }
-/*item 상세페이지*/
-/*삭제 버튼*/
-.insert-btn{
+/* 상품 글쓰기 버튼 */
+.iteminsert-btn {
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+ .iteminsert-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+}
+
+ .ListInsert-btn{
 	display: inline-block;
     width: 915px;
     padding-top: 1px;
@@ -94,7 +106,13 @@ aside {
     background-color: #52AE32;
     border-color: #52AE32;
     color: #fff;
+} 
+ .ListInsert-btn:hover {
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
 }
+/*item 상세페이지*/
+
+/* 아이템 삭제 버튼 */
 .remove-button{
 	display: block;
     width: 45px;
@@ -123,6 +141,7 @@ aside {
 }
 
 #itemSelect-img>img{
+	object-fit: cover;
 	width: 400px;
 	height: 400px;
 	margin: 30px;
@@ -273,16 +292,3 @@ aside {
   width: 100%;
   padding: 5px;
 }
-
-.iteminsert-btn {
-  padding: 10px 20px;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-}
-
-.iteminsert-btn:hover {
-  background-color: #555;
-}
-

@@ -1,0 +1,83 @@
+@charset "UTF-8";
+
+.closeBtn{
+	float: right;
+}
+
+table {
+	width: 100%;
+	border-top: 1px solid #444444;
+	border-collapse: collapse;
+}
+/* th, td {
+	border-bottom: 1px solid #444444;
+	border-left: 1px solid #444444;
+	padding: 10px;
+	
+	board:1;
+} */
+
+.orders-table {
+    margin: auto;
+	border-collapse: collapse;
+	position: relative;
+	width: 800px;
+}
+
+.orders-table td {
+	border-top: 2px solid #eee;
+	border-bottom: 2px solid #eee;
+	padding: 8px;
+	position: relative;
+}
+
+.orders-table tr:first-child {
+	padding: 20px;
+}
+.orders-table td:first-child {
+	width: 10px;
+}
+.orders-table td:first-child>img {
+	object-fit: cover;
+	width: 100px;
+	height: 80px;
+}
+
+.orders-table td:nth-child(2) {
+	width: 100px;
+	border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+}
+
+
+/* 두 번째 td에 스타일 적용 */
+.orders-table td:nth-child(3) {
+	width: 370px;
+}
+
+/* 세 번째 td에 스타일 적용 */
+.orders-table td:nth-child(4) {
+	width: 170px;
+	border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+}
+
+/* 마지막 td에 스타일 적용 */
+.orders-table td:last-child {
+	width: 170px;
+}
+
+	
+.sanda-button{
+	display: block;
+    width: 100%;
+    padding-top: 1px;
+    height: 34px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    font-size: 12px;
+    background-color: #ff3e3e;
+    border-color: #ff3e3e;
+    color: #fff;
+    font-family: "Spoqa-Bold", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", Arial, sans-serif !important;
+}

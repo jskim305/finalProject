@@ -4,7 +4,7 @@
 	text-align: center;
 	margin: 10px;
 }
-
+/*패키지 상단 매안로고*/
 .packgae-logo {
 	background-image: url(../images/papapapapa.jpg);
 	background-position: center;
@@ -27,6 +27,7 @@
 .packgae-logo>.packgae-logo-text> #text2{
 	font-size: 80px;
 }
+/*패키지 카드 */
 .package-card {
 	width: 260px;
 	display: inline-block;
@@ -45,8 +46,10 @@
 	margin-bottom: 20px;
 }
 
-.package-List  {
+.package-List {
 	margin-top: -150px;
+   	justify-content: center;
+   	padding: 13px;
 }
 .package-card-but {
     width: 120px;
@@ -56,7 +59,7 @@
     border-radius: 20px 20px 0 0;
     text-align: center;
     align-items : center;
-   	margin: auto;  	
+   	margin: auto;
    	margin-bottom:-10px;
    	justify-content: center;
 	box-shadow:1px 1px 1px 1px;
@@ -77,6 +80,38 @@
     size: 5px; 	
 	font-weight: bold;
 }
+/*패키지 삭제버튼*/
+.remove-button{
+	display: block;
+    width: 45px;
+    padding-top: 1px;
+    height: 34px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    font-size: 7px;
+    background-color: #ff3e3e;
+    border-color: #ff3e3e;
+    color: #fff;
+}
+
+/*패키지 글쓰기 버튼*/
+ .ListInsert-btn{
+	display: inline-block;
+    width: 100%;
+    padding-top: 1px;
+    height: 34px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    font-size: 12px;
+    background-color: #52AE32;
+    border-color: #52AE32;
+    color: #fff;
+} 
+ .ListInsert-btn:hover {
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+}
+
+/*패키지 리스트 설명 */
 #package-explanation {
 	width: 1200px;
 	text-align: center;
@@ -120,13 +155,14 @@
 #package-select {
 	width: 1000px;
 	height: 500px;
-	margin: 50px 0;
+	margin: 30px 0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
 #pacSelect-img{
+ 	object-fit: cover;
 	width: 500px;
 	height: 500px;
 	margin: 20px;

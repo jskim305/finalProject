@@ -11,11 +11,11 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Item {
 	private int itemNo;
+	private String itemSector;
 	private String itemName;
 	private int itemPrice;
 	private String itemContent;
 	private String itemLocal;
-	private String itemSecotr;
 	private int itemCount;
 	private int itemPac;
 	private String itemLogo;

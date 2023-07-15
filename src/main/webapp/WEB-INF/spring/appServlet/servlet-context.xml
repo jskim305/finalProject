@@ -35,5 +35,24 @@
 		<beans:property name="order" value="1"/>
 	</beans:bean>
 	
+	<!-- Interceptor 등록 -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/item/**"/>
+			<mapping path="/board/**"/>
+			<mapping path="/farm/**"/>
+			
+
+			<exclude-mapping path="/item/itemlist.bo"/>
+			<exclude-mapping path="/item/paclist.bo"/>
+			
+			<exclude-mapping path="/board/boardList.do"/>
+			
+			<exclude-mapping path="/farm/indexFarm.do"/>
+
+			<beans:bean class="com.kh.finalProject.common.interceptor.LoginInterceptor" />
+		</interceptor>
+	</interceptors>
+	
 	
 </beans:beans>

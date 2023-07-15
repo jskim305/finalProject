@@ -21,8 +21,8 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	@Override
-	public Item selectOnePac(int INo) {
-		return itemDao.selectOnePac(INo);
+	public Item selectOnePac(int itemNo) {
+		return itemDao.selectOnePac(itemNo);
 	}
 
 	//상품페이지 리스트 불러오기
@@ -32,22 +32,8 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	@Override
-	public List<Item> findlist1() {
-		return itemDao.findlist1();
-	}
-
-	@Override
-	public List<Item> findlist2() {
-		return itemDao.findlist2();
-	}
-	@Override
-	public List<Item> findlist3() {
-		return itemDao.findlist3();
-	}
-
-	@Override
-	public Item selectOneitem(int INo) {
-		return itemDao.selectOneitem(INo);
+	public Item selectOneitem(int itemNo) {
+		return itemDao.selectOneitem(itemNo);
 	}
 	//상품카테고리 자동 입력 테스트
 	@Override
@@ -55,15 +41,22 @@ public class ItemServiceImpl implements ItemService {
 		return itemDao.findItemsByCategory(category);
 	}
 
+	/* 상품등록 ITEM */
 	@Override
 	public int insertItem(Item item) {
 		return itemDao.insertItem(item);
+	}
+	/* 상품등록 Package */
+	@Override
+	public int insertPac(Item item) {
+		return itemDao.insertPac(item);
 	}
 
 	@Override
 	public void deleteItem(int itemNo) {
 		itemDao.deleteItem(itemNo);
 	}
+
 	
 
 }

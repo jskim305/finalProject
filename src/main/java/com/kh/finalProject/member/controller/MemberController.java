@@ -1,5 +1,6 @@
 package com.kh.finalProject.member.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,9 +60,6 @@ public class MemberController {
 	public String memberEnroll(Member member) {
 		// 비밀번호 암호화 과정
 		String rawPwd = member.getMemPwd();
-		
-		System.out.println(rawPwd);
-		System.out.println(member);
 		String encodedPwd = passwordEncoder.encode(rawPwd);
 		member.setMemPwd(encodedPwd);
 		
@@ -181,7 +179,8 @@ public class MemberController {
 //	전체회원조회
 	  @GetMapping("/list") 
 	  public String getMemberList(Model model) { 
-		  List<Member> list = memberService.getMembers(); 
+		  List<Member> list = memberService.getMembers();
+		  
 		  model.addAttribute("list", list );
 		  return "jsonView"; 
 	  }

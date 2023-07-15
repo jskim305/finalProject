@@ -18,4 +18,5 @@ public class OrderDetail {
 	private int detailPrice;
 	private int detailCount;
 	private String itemName;
+	private String detailSituation;
 }

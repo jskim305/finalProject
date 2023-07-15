@@ -4,72 +4,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>    
 
-<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/member/memberAll.css?v=<%System.currentTimeMillis(); %>">
 
-<style>
-    body {font-family: Arial, sans-serif;}
-    .form-container {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 20px;
-        background-color: #fff;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    }
-    .form-container h3 {
-        margin-top: 0;
-        margin-bottom: 20px;
-        color: #4caf50;
-        font-size: 20px;
-    }
-    .form-container label {
-        display: block;
-        font-weight: bold;
-        margin-bottom: 5px;
-    }
-    .form-container input[type="text"],
-    .form-container input[type="number"],
-    .form-container input[type="tel"],
-    .form-container input[type="email"],
-    .form-container input[type="date"],
-    .form-container textarea {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-        }
-    .form-container .form-row,
-    .form-container .form-row2,
-    .form-container .form-row3 {
-        display: flex;
-        align-items: center;
-    }
-    .form-container .form-row .form-col,
-    .form-container .form-row2 .form-col,
-    .form-container .form-row3 .form-col {
-        flex: 1;
-        margin-right: 10px;
-    }
-    
-    .form-container input[type="submit"],
-    .form-container input[type="button"],
-    .form-container input[type="reset"] {
-        width: 100%;
-        padding: 10px;
-        border: none;
-        border-radius: 4px;
-        background-color: #4caf50;
-        color: #fff;
-        font-weight: bold;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
-    .form-container input[type="submit"]:hover,
-    .form-container input[type="reset"]:hover {
-        background-color: #45a049;
-    }
-</style> 
+<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
 
 <div class="form-container">
@@ -107,7 +44,6 @@
         <input type="hidden" name="memId" id="memId" value="${loginMember.memId}">
             
 	    <div class="form-row2">
-	   		<%-- <input type="hidden" id="btnCheck" value="${btnCheck}"> --%>
 		    <div class="form-col">
 				<input type="button" id="editMemInfoBtn" value="정보 수정">
 			</div>
@@ -128,7 +64,6 @@
 			<div class="form-col">
 				<input type="submit" id="editMemInfoBtn2" value="수정">
 			</div>
-			
 			<div class="form-col">
 			    <input type="button" value="취소" onclick="location.reload();">
 			</div>

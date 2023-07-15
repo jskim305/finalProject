@@ -11,8 +11,6 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param value="packagemain" name="title" />
 </jsp:include>
-
-
 <div class="packgae-logo">
 	<div class="packgae-logo-text">
 		<p id="text1">베지팜이 엄선한 질병 • 건강 기준에 맞춘</p>
@@ -24,28 +22,15 @@
 <div class="container" style="width: 1000px">
 	<main class="pakge-main">
 		<div id="package-menu">
-			<div class="package-card">
-				<a href="${pageContext.request.contextPath}/item/pacForm.bo?INo=1" >
-					<h2>감기 탈출 패키지</h2>
-				</a>
-			</div>
-			<div class="package-card">
-				<a href="${pageContext.request.contextPath}/item/pacForm.bo?INo=2">
-					<h2>혈당 관리 패키지</h2>
-				</a>
-			</div>
-			<div class="package-card">
-				<a href="${pageContext.request.contextPath}/item/pacForm.bo?INo=3">		
-					<h2>당뇨 관리 패키지</h2>
-				</a>
-			</div>
-			<div class="package-card">
-				<a href="${pageContext.request.contextPath}/item/pacForm.bo?INo=4">
-					<h2>심혈관계질환</h2>
-				</a>
-			</div>
+			 <c:forEach items="${paclist}" var="pac">
+				<div class="package-card">
+					<a href="${pageContext.request.contextPath}/item/pacForm.bo?itemNo=${pac.itemNo}" >
+						<h2>${pac.itemName}</h2>
+					</a>
+				</div>
+			</c:forEach> 
 		</div>
-		<p>HOME > 패키지 > ${pacForm.itemName}</p>
+		<p style="font-weight: bold;">HOME > 패키지 > ${pacForm.itemName}</p>
 		<div id="package-select">
 			<div id="pacSelect-img">
 				<img src="${pageContext.request.contextPath}/resources/images/itemlogo/${pacForm.itemLogo}" alt="logo">
@@ -55,14 +40,15 @@
 					<h2>${pacForm.itemName}</h2>
 				</div>
 				<div class="info-area_price">
-					<h2>${pacForm.itemPrice}원</h2>
+				<h2><fmt:formatNumber value="${pacForm.itemPrice}" pattern="#,###"/>원</h2>
+					
 				</div>
 				<div class="info-area_farmBox">
 					<div class="info-area_title">
 						<span>판매 농가</span>
 					</div>
 					<div class="info-area_farm">
-						<h2>${pacForm.itemLocal}</h2>
+						<p>${pacForm.itemLocal}</p>
 					</div>
 				</div>
 					<div class="item-sulyangBox">
@@ -74,7 +60,6 @@
 								<input type="hidden" name="memId" value="${loginMember.memId}">					
 								<input type="hidden" name="itemNo" value="${pacForm.itemNo}">							
 								<input type="number" name="cartCount" min="0" max="${pacForm.itemLocal}" value="1" onchange="updateTotalPrice(this)">
-								<input type="hidden" name="cartPrice"  value="${pacForm.itemPrice}">							
 							</div>
 						</form>
 					</div>
@@ -82,12 +67,18 @@
 						<div class="info-area_title">
 							<span>총 금액</span>
 						</div>
-						<span class="total_price">${pacForm.itemPrice}원</span>
+						<span class="total_price"><fmt:formatNumber value="${pacForm.itemPrice}" pattern="#,###"/>원</span>
 					</div>
 					<div class="info-area_btn">
 						<button id="info-area_btn" onclick="insertCart()">장바구니</button>
 					</div>
 				</div>
+				<c:if test="${ loginMember.admin =='1'}">
+					<form action="${pageContext.request.contextPath}/item/deleteItem.bo" method="post">
+						<input type="hidden" name="itemNo" value="${pacForm.itemNo}">
+						<button class="remove-button" type="submit">삭제하기</button>
+					</form>    
+		   		</c:if>
 			</div>
 			<div class="info-area_content">
 				<img src="${pageContext.request.contextPath}/resources/images/${pacForm.itemContent}" alt="logo">
@@ -96,19 +87,25 @@
 	</div>
 	
 <script>
-   const insertCart = () => {
-       frm.method = 'post';
-       frm.action = '${pageContext.request.contextPath}/cart/insertPacCart.ca';
-       frm.submit();
-   }
-   
+	const insertCart = () => {
+		const cartCount = parseInt(document.querySelector('input[name="cartCount"]').value);
+			if (cartCount === 0) {
+				alert("장바구니 수량을 입력해주세요.");
+				return;
+			}
+			frm.method = 'post';
+			frm.action = '${pageContext.request.contextPath}/cart/insertCart.ca';
+			frm.submit();
+	}
+	
     function updateTotalPrice(input) {
         const price = ${pacForm.itemPrice};
         const quantity = parseInt(input.value);
         const totalPriceElement = document.querySelector('.total_price');
 
         const totalPrice = price * quantity;
-        totalPriceElement.textContent = totalPrice + '원';
+	    const formattedTotalPrice = totalPrice.toLocaleString();
+        totalPriceElement.textContent = formattedTotalPrice + '원';
     }
 </script>
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

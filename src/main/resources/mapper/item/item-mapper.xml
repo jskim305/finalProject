@@ -15,7 +15,7 @@
 	<select id="selectOnePac" resultMap="itemMap">
 	select *
 	  from item
-	 where ITEM_NO = #{itemNo}
+	 where ITEM_NO =#{itemNo}
 	</select>
 
 <!-- 상품페이지 리스트 -->
@@ -29,7 +29,7 @@
 	<select id="selectOneitem" resultMap="itemMap">
 	select *
 	  from item
-	 where ITEM_NO = #{itemNo}
+	 where ITEM_NO =#{itemNo}
 	</select>
 	
 	<select id="findItemsByCategory" resultMap="itemMap">
@@ -55,11 +55,27 @@
 		#{itemLogo}
 	)
 	</insert>
+
+	<insert id="insertPac">
+	insert into
+	  item
+	values (
+		sql_item_no.nextval,
+		#{itemSector},
+		#{itemName},
+		#{itemPrice},
+		#{itemContent},
+		#{itemLocal},
+		#{itemCount},
+		0,
+		#{itemLogo}
+	)
+	</insert>
 	
 	<!-- 삭제하기 -->
 	<delete id="deleteItem">
 	    DELETE
 	      FROM item 
 	     WHERE ITEM_NO = #{itemNo}
-</delete>
+	</delete>
 </mapper>

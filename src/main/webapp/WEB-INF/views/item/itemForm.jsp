@@ -25,7 +25,7 @@
 	</jsp:include>  
 	<main class="item-Form-main">
 		<form name="frm">
-			<h1>상품등록페이지</h1>
+			<h1>${ItemType}등록 페이지</h1>
 			<table>			
 				<tr>
 					<td>상품구분</td>
@@ -57,14 +57,14 @@
 				</tr>			
 			</table>
 		</form> 
-		<button type="button" class="iteminsert-btn" onclick="insertItem()">저장</button>
-		
+
+		<button class="ListInsert-btn" onclick="insertItem()">${ItemType} 등록</button>
 	</main>
 </div>
 <script>
 	const insertItem = () => {
 	    frm.method = 'post';
-	    frm.action = '${pageContext.request.contextPath}/item/insertItem.bo';
+	    frm.action = '${pageContext.request.contextPath}/item/insertItem.bo?ItemType=${ItemType}';
 	    frm.submit();
 	}
 </script>

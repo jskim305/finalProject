@@ -47,14 +47,13 @@
 						<div class="info-area_title">
 							<span>수량</span>
 						</div>
-						<form name="frm">
-							<div class="info-area_number">
-								<input type="hidden" name="memId" value="${loginMember.memId}">					
-								<input type="hidden" name="itemNo" value="${itemForm.itemNo}">							
-								<input type="number" name="cartCount" min="0" max="${itemForm.itemLocal}" value="1" onchange="updateTotalPrice(this)">
-								<input type="hidden" name="cartPrice"  value="${itemForm.itemPrice}">							
-							</div>
-						</form>
+							<form name="cart">
+								<div class="info-area_number">
+									<input type="hidden" name="memId" value="${loginMember.memId}">					
+									<input type="hidden" name="itemNo" value="${itemForm.itemNo}">							
+									<input type="number" name="cartCount" min="0" max="${itemForm.itemLocal}" value="1" onchange="updateTotalPrice(this)">
+								</div>
+							</form>
 					</div>
 					<div class="info-area_priceBox">
 						<div class="info-area_title">
@@ -66,10 +65,12 @@
 							<button id="info-area_btn" onclick="insertCart()">장바구니</button>
 					</div>
 				</div>
-			<form action="${pageContext.request.contextPath}/item/deleteItem.bo" method="post">
-				<input type="hidden" name="itemNo" value="${itemForm.itemNo}">
-				<button class="remove-button" type="submit">삭제하기</button>
-			</form>    
+				<c:if test="${ loginMember.admin =='1'}">
+					<form action="${pageContext.request.contextPath}/item/deleteItem.bo" method="post">
+						<input type="hidden" name="itemNo" value="${itemForm.itemNo}">
+						<button class="remove-button" type="submit">삭제하기</button>
+					</form>    
+		   		</c:if>
 			</div>
 			<div>
 			</div>
@@ -82,9 +83,9 @@
 <script>
 
 	const insertCart = () => {
-	    frm.method = 'post';
-	    frm.action = '${pageContext.request.contextPath}/cart/insertCart.ca';
-	    frm.submit();
+		cart.method = 'post';
+		cart.action = '${pageContext.request.contextPath}/cart/insertCart.ca';
+		cart.submit();
 	}
 
 	function updateTotalPrice(input) {

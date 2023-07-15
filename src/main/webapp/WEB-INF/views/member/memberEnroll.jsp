@@ -6,53 +6,25 @@
 <head>
 <meta charset="UTF-8">
 
-<!-- 회원 가입만 되는 상태
-	 문제는 아직 유효성 검사를 접목시키지 못함.
--->
-
 <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
- <%--  <script src="${pageContext.request.contextPath}/resources/js/join.js?v=<%System.currentTimeMillis(); %>" type="text/javascript" charset="UTF-8"></script> --%>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/member/memberEnroll.css?v=<%System.currentTimeMillis(); %>">
 
-  <style>
-    body {
-      min-height: 100vh;
-      
-      background-image: url('${pageContext.request.contextPath}/resources/images/v1_76.png');
-      background-size: contain;
-		/* background-image: url('${pageContext.request.contextPath}/WEB-INF/index.jsp'); */
 
-      /* background: -webkit-gradient(linear, left bottom, right top, from(#92b5db), to(#1d466c));
-      background: -webkit-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
-      background: -moz-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
-      background: -o-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
-      background: linear-gradient(to top right, #92b5db 0%, #1d466c 100%); */
 
-    .input-form {
-      max-width: 680px;
-
-      margin-top: 80px;
-      padding: 32px;
-
-      background: #fff;
-      -webkit-border-radius: 10px;
-      -moz-border-radius: 10px;
-      border-radius: 10px;
-      -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
-      -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
-      box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
-    }
-  </style>
   
 </head>
 
-<body>ㄴ
+<body>
   <div class="container">
     <div class="input-form-backgroud row">
       <div class="input-form col-md-12 mx-auto">
-        <h4 class="mb-3">회원가입</h4>
+        <h4 class="mb-3">회원가입  
+        	<img class="closeBtn" src="${pageContext.request.contextPath}/resources/images/icon-cancel.png"
+        							   onclick="location.href='${pageContext.request.contextPath}/index.jsp'">
+      	</h4> 
 		<form name="form" action="${pageContext.request.contextPath}/member/memberEnroll.me" method="post">
           <div class="row">
           
@@ -65,7 +37,7 @@
             <div class="col-md-6 mb-3">
               <label for="mBirth">생년월일</label>
               <span style="color: red; font-size: 14px;" id="ckBirth" name="ckBirth" ></span>
-              <input type="text" class="form-control" id="mBirth" name="memBirth"  placeholder="yymmdd" onclick="" required>
+              <input type="text" class="form-control" id="mBirth" name="memBirth" required>
             </div>
             
             <div class="col-md-6 mb-3">
@@ -104,7 +76,6 @@
           
           <hr class="mb-4">
           <div class="mb-4"></div>
-          <!-- <button class="btn btn-primary btn-lg btn-block" type="submit" onclick="inputCheck();">가입 완료</button> -->
         	<button class="btn btn-primary btn-lg btn-block" type="submit" >가입 완료</button>
         </form>
       </div>
@@ -117,7 +88,7 @@
   <script>
   	// 이름 유효성검사
   	document.getElementById('mName').onkeyup = function() {
-  		var msg = '';
+  	 	var msg = '';
 		var nameExp = /^[가-힣]{2,6}$/;
 		var memName = this.value;
 		
@@ -133,7 +104,7 @@
   	
   	// ID 유효성검사
   	document.getElementById('mId').onkeyup = function() {
-  		var msg = '';
+  	 	var msg = '';
   		var idExp = /^[a-z][a-z0-9]{3,19}$/i;
 		var memId = this.value;
 		
@@ -148,7 +119,7 @@
   	}
   	
   	// 생년월일 유효성검사
-	document.getElementById('mBirth').onkeyup = function() {
+ 	document.getElementById('mBirth').onkeyup = function() {
 		var msg = '';
 		var birthExp = /^\d{2}(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])$/;
 		var memBirth = this.value;
@@ -165,7 +136,7 @@
   	
 	// PW 유효성검사
   	document.getElementById('mPwd').onkeyup = function() {
-  		var msg = '';
+  	 	var msg = '';
   		var pwdExp = /^(?=.*?[a-zA-Z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,20}$/;
 		var memPwd = this.value;
 		
@@ -181,7 +152,7 @@
   	
  	// rePW 유효성검사
   	document.getElementById('rePwd').onkeyup = function() {
-  		var memPwd = document.getElementById('mPwd').value;
+  	 	var memPwd = document.getElementById('mPwd').value;
   		var rePwd = this.value;
   		
   		if(memPwd === rePwd){

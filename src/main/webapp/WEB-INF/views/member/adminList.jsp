@@ -199,22 +199,23 @@ $(document).ready(function() {
 	      url: "${pageContext.request.contextPath}/member/list",
 	      success: function(data) {
 	        var value = "";
-	        $.each(data, function(index, item) {
-	          for (var i = 0; i < item.length; i++) {
-	            value += "<tr>";
-	            value += "<td>" + item[i].memId + "</td>";    
-	            value += "<td>" + item[i].memName + "</td>";  
-	            value += "<td>" + item[i].memBirth + "</td>"; 
-	            value += "<td>" + item[i].memCreate + "</td>";
-	            value += "<td>" + item[i].memTel + "</td>";   
-	            value += "<td>" + item[i].memAddr + "</td>";  
-	            value += "<td>" + item[i].memEmail + "</td>"; 
-	            value += "<td>" + item[i].memStatus + "</td>";
-	            value += "<td><button type='button' onclick='deleteMember(\"" + item[i].memId + "\")'>회원삭제</button></td>";
-	            value += "</tr>";
-	          }
-	        });
+	        
+	        for (var i = 0; i < data.list.length; i++) {
+		           value += "<tr>";
+		            value += "<td>" + data.list[i].memId + "</td>";    
+		            value += "<td>" + data.list[i].memName + "</td>";  
+		            value += "<td>" + data.list[i].memBirth + "</td>"; 
+		            value += "<td>" + data.list[i].memCreate.year + "-" + data.list[i].memCreate.monthValue + "-" + data.list[i].memCreate.dayOfMonth + "</td>";
+		            value += "<td>" + data.list[i].memTel + "</td>";   
+		            value += "<td>" + data.list[i].memAddr + "</td>";  
+		            value += "<td>" + data.list[i].memEmail + "</td>"; 
+		            value += "<td>" + data.list[i].memStatus + "</td>";
+		            value += "<td><button type='button' onclick='deleteMember(\"" + data.list[i].memId + "\")'>회원삭제</button></td>";
+		            value += "</tr>";
+		            console.log(data.list[i]);
+	        }
 	        $("#output1 tbody").html(value);
+	        
 	      },
 	      error: function() {
 	        console.log("Error occurred");
@@ -244,25 +245,21 @@ $(document).ready(function() {
 	    $.ajax({
 	        url: "${pageContext.request.contextPath}/member/list",
 	        success(data) {
-	        	console.log(data);
-	        	
 	            var value = "";
-	            $.each(data, function(index, item) {
 	            	 
-	            	for (var i = 0; i < item.length; i++) {	
-	            		value += "<tr>";
-	                    value += "<td><input class='member-mid' value='" + item[i].memId + "' readonly></td>";
-	                    value += "<td><input class='member-mname' value='" + item[i].memName + "' readonly></td>";
-	                    value += "<td><input class='member-mbirth' value='" + item[i].memBirth + "'></td>";
-	                    value += "<td><input class='member-mcreate' value='" + item[i].memCreate + "' readonly></td>";
-	                    value += "<td><input class='member-mtel' value='" + item[i].memTel + "'></td>";
-	                    value += "<td><input class='member-maddr' value='" + item[i].memAddr + "'></td>";
-	                    value += "<td><input class='member-memail' value='" + item[i].memEmail + "'></td>";
-	                    value += "<td><button type='button' class='update-button'>수정하기</button></td>";
-	                    value += "</tr>"; 
-	               }
-	                $("#output2 tbody").html(value); 
-	            });
+            	for (var i = 0; i < data.list.length; i++) {	
+            		value += "<tr>";
+                    value += "<td><input class='member-mid' value='" + data.list[i].memId + "' readonly></td>";
+                    value += "<td><input class='member-mname' value='" + data.list[i].memName + "' readonly></td>";
+                    value += "<td><input class='member-mbirth' value='" + data.list[i].memBirth + "'></td>";
+                    value += "<td><input class='member-mcreate' value='" + data.list[i].memCreate.year + "-" + data.list[i].memCreate.monthValue + "-" + data.list[i].memCreate.dayOfMonth + "' readonly></td>";
+                    value += "<td><input class='member-mtel' value='" + data.list[i].memTel + "'></td>";
+                    value += "<td><input class='member-maddr' value='" + data.list[i].memAddr + "'></td>";
+                    value += "<td><input class='member-memail' value='" + data.list[i].memEmail + "'></td>";
+                    value += "<td><button type='button' class='update-button'>수정하기</button></td>";
+                    value += "</tr>"; 
+				}
+                $("#output2 tbody").html(value); 
 	        },
 	        error: console.log
 	    });
@@ -516,41 +513,6 @@ $(document).ready(function() {
 		    });
 		});
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

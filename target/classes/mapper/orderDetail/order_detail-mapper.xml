@@ -26,7 +26,8 @@
 		ITEM_NO = #{itemNo},
 		DETAIL_PRICE = #{detailPrice},
 		DETAIL_COUNT = #{detailCount},
-		ITEM_NAME = #{itemName}
+		ITEM_NAME = #{itemName},
+		default
 	WHERE DETAIL_NO = #{detailNo}
 </update>
 

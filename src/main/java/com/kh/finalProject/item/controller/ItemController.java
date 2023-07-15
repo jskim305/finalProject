@@ -28,33 +28,34 @@ public class ItemController {
 	@Autowired
 	private ItemService itemService;
 	
+	//패키지 리스트 페이지
 	@GetMapping("/paclist.bo")
 	public String paclist(Model model) {
 		List<Item> paclist = itemService.selectPacList();
-		System.out.println("paclist =" + paclist);
-		model.addAttribute("paclist", paclist );
+		
+		model.addAttribute("paclist", paclist);
 		return "/item/packageList";
 	}
-	
+	//패키지 상품 페이지
 	@GetMapping("pacForm.bo")
-	public String pacForm(@RequestParam int INo, Model model) {
-		Item pacForm = itemService.selectOnePac(INo);
+	public String pacForm(@RequestParam int itemNo, Model model) {
+		Item pacForm = itemService.selectOnePac(itemNo);
+		List<Item> paclist = itemService.selectPacList();
+		model.addAttribute("paclist", paclist);
 		model.addAttribute("pacForm", pacForm);
 		return "/item/package";
 	}
 
 	@GetMapping("/itemlist.bo")
 	public String itemlist(Model model) {
-		System.out.println("itemlist =" + model);
 		List<Item> itemlist = itemService.selectitemList();
-		System.out.println("itemlist =" + itemlist);
 		model.addAttribute("itemlist", itemlist);
 		return "/item/itemList";
 	}
 
 	@GetMapping("itemForm.bo")
-	public String itemForm(@RequestParam int INo, Model model) {
-		Item itemForm = itemService.selectOneitem(INo);
+	public String itemForm(@RequestParam int itemNo, Model model) {
+		Item itemForm = itemService.selectOneitem(itemNo);
 		model.addAttribute("itemForm", itemForm);
 		return "/item/item";
 	}
@@ -67,16 +68,24 @@ public class ItemController {
 	}
 	//리스트 글쓰기
 	@GetMapping("insertList.bo")
-	public String insertList() {
+	public String insertList(String itemType, Model model) {
+		System.out.println("ItemType ="+ itemType);
+		model.addAttribute("ItemType", itemType);
 	    return "/item/itemForm";
 	}
 	
 	@PostMapping("/insertItem.bo")
-	public String insertItem(Item item, RedirectAttributes redirectAttr) {
-		int result = itemService.insertItem(item);
+	public String insertItem(String ItemType,Item item, RedirectAttributes redirectAttr) {
+		if(ItemType.equals("item")) {
+			int result = itemService.insertItem(item);
+		}if(ItemType.equals("package")) {
+			int result = itemService.insertPac(item);
+		}
+		
 		redirectAttr.addFlashAttribute("msg", "정상적으로 저장했습니다.");
 		return "redirect:/item/itemlist.bo";
 	}
+
 	
 	@PostMapping("/deleteItem.bo")
 	public String deleteItem(int itemNo, RedirectAttributes redirectAttr) {

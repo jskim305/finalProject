@@ -5,13 +5,12 @@
  
 <mapper namespace="com.kh.finalProject.farm.model.dao.FarmDao">
 
-	<!-- resultMap "farmMap" 정의 -->
+<!-- resultMap "farmMap" 정의 -->
     <resultMap type="farm" id="farmMap"></resultMap>
-    
     
    <select id="selectFarmById" resultMap="farmMap">
       select *
       from farm 
-      where FARM_NO = #{farmNo} 
+      where FARM_NO = #{farmId} 
    </select>
 </mapper> 

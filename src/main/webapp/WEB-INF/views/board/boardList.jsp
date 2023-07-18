@@ -7,22 +7,27 @@
 		width: 1000px;
 		margin: auto;
 	}
+
 	table {
 		border-collapse: collapse;
 		width: 100%;
 	}
+
 	th, td {
 		border: 1px solid black;
 		padding: 8px;
 		text-align: center;
 	}
+
 	th {
 		background-color: #f2f2f2;
 	}
+
 	td a {
 		color: black;
 		text-decoration: none;
 	}
+
 	.btn {
 		padding: 5px 10px;
 		border: 1px solid #ccc;
@@ -30,10 +35,12 @@
 		background-color: #fff;
 		cursor: pointer;
 	}
+
 	#gul {
 		text-align: right;
-		margin-top : 30px;
+		margin-top: 30px;
 	}
+
 	#qna-heading {
 		text-align: center;
 		font-weight: bold;
@@ -41,7 +48,6 @@
 		margin-bottom: 20px;
 	}
 
-	/* 추가된 스타일 */
 	.table {
 		border-collapse: collapse;
 		width: 100%;
@@ -87,6 +93,25 @@
 		background-color: #4caf50;
 		color: #fff;
 	}
+
+	.table {
+		border-collapse: collapse;
+		width: 100%;
+	}
+
+	.table th, .table td {
+		padding: 10px;
+		border: none; /* 세로 선 제거 */
+	}
+
+	.table th {
+		background-color: #f2f2f2;
+		font-weight: bold;
+	}
+
+	.table td {
+		border-bottom: 1px solid #ccc; /* 가로 선 유지 */
+	}
 </style>
 
 <jsp:include page="/WEB-INF/views/common/header.jsp">
@@ -119,39 +144,36 @@
 				<button type="button" class="btn btn-outline-secondary" id="enrollBtn">글쓰기</button> <!-- 버튼을 오른쪽 아래에 넣을 부분 -->
 			</td>
 	  </div>
-	
-	<nav aria-label="Page navigation example">
-		<ul class="pagination justify-content-center">
-			<c:if test="${pi.nowPage ne 1}">
-				<li class="page-item">
-					<a class="page-link" href="${pageContext.request.contextPath}/board/boardList.bo?nowPage=${pi.nowPage-1}" >Previous</a>
-				</li>
-			</c:if>
-			<c:forEach var="p" begin="${pi.startPage}" end="${pi.endPage}">
-				<c:choose>
-					<c:when test="${p eq pi.nowPage}">
-						<li class="page-item active">
-							<a class="page-link" href="${pageContext.request.contextPath}/board/boardList.bo?nowPage=${p}">${p}</a> <!-- 현재 페이지 표시 -->
-						</li>
-					</c:when>
-					<c:otherwise>
-						<li class="page-item">
-							<a class="page-link" href="${pageContext.request.contextPath}/board/boardList.bo?nowPage=${p}">${p}</a> <!-- 다른 페이지 표시 -->
-						</li>
-					</c:otherwise>
-				</c:choose>
-			</c:forEach>
-			<c:if test="${ pi.nowPage ne pi.totalPage }">
-				<li class="page-item">
-					<a class="page-link" href="${pageContext.request.contextPath}/board/boardList.bo?nowPage=${pi.nowPage+1}">Next</a>
-				</li>
-			</c:if>
-		</ul>
-	</nav>
+			<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <c:if test="${pi.nowPage ne 1}">
+            <li class="page-item">
+                <a class="page-link" href="${pageContext.request.contextPath}/board/boardList.bo?nowPage=${pi.nowPage-1}">&laquo;</a>
+            </li>
+        </c:if>
+        <c:forEach var="p" begin="${pi.startPage}" end="${pi.endPage}">
+            <li class="page-item${p eq pi.nowPage ? ' active' : ''}">
+                <a class="page-link" href="${pageContext.request.contextPath}/board/boardList.bo?nowPage=${p}">${p}</a>
+            </li>
+        </c:forEach>
+        <c:if test="${pi.nowPage ne pi.totalPage}">
+            <li class="page-item">
+                <a class="page-link" href="${pageContext.request.contextPath}/board/boardList.bo?nowPage=${pi.nowPage+1}">&raquo;</a>
+            </li>
+        </c:if>
+    </ul>
+</nav>
 </div>
+<br><br><br><br><br>
+
+
+
 <script>
 	document.querySelector("#enrollBtn").addEventListener('click', (e) => {
-		location.href='${pageContext.request.contextPath}/board/boardForm.bo'; <!-- 버튼을 클릭했을 때 글쓰기 페이지로 이동 -->
+		location.href='${pageContext.request.contextPath}/board/boardForm.bo?tag=문의'; <!-- 버튼을 클릭했을 때 글쓰기 페이지로 이동 -->
 	});
 </script>
+
+
+
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

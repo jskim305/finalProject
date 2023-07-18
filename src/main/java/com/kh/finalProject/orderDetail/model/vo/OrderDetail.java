@@ -19,4 +19,6 @@ public class OrderDetail {
 	private int detailCount;
 	private String itemName;
 	private String detailSituation;
+	private String memId;
+	private String memName;
 }

@@ -46,7 +46,10 @@
 			<exclude-mapping path="/item/itemlist.bo"/>
 			<exclude-mapping path="/item/paclist.bo"/>
 			
-			<exclude-mapping path="/board/boardList.do"/>
+			<exclude-mapping path="/board/vegFarm.bo"/>
+			<exclude-mapping path="/board/boardList.bo"/>
+			<exclude-mapping path="/board/boardDetail.bo"/>
+			<exclude-mapping path="/board/gongjiList.bo"/>
 			
 			<exclude-mapping path="/farm/indexFarm.do"/>
 

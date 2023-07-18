@@ -13,7 +13,7 @@ public class FarmServiceImpl implements FarmService {
 	FarmDao farmDao;
 
 	@Override
-	public Farm selectFarmById(int farmNo) {
-		return farmDao.selectFarmById(farmNo);
+	public Farm selectFarmById(int farmId) {
+		return farmDao.selectFarmById(farmId);
 	}	
 }

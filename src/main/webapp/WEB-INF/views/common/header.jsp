@@ -32,16 +32,7 @@
          			<a href="${pageContext.request.contextPath}/member/memberLogout.me" >로그아웃</a>
          		</c:if>
          		<a>|</a>
-         		
-         		
-         		<!-- --------------------------- 주문창 확인용코드 ------------------------------------ -->
-         		<c:if test="${not empty loginMember}">
-         			<a href="${pageContext.request.contextPath}/orders/ordersForm.or" >주문 test</a>
-         			<a>|</a>
-         		</c:if>
-         		<!-------------------------------------------------------------------------------  -->
-         		
-         		
+
          		<c:if test="${not empty loginMember && loginMember.admin eq 0}">
 	            	<a href="${pageContext.request.contextPath}/cart/myCart.ca?memId=${loginMember.memId}" >장바구니</a>
 	             	<a>|</a>
@@ -71,9 +62,11 @@
        		</div>
 			<div class="middle-links">
        			<ul class="middle-nav">
-	            	<li><a href="#">공지사항</a></li>
+	            	<li>
+	            		<a href="${pageContext.request.contextPath}/board/gongjiList.bo?tag='공지사항'">공지사항</a>
+	            	</li>
 					<li>
-						<a href="${pageContext.request.contextPath}/board/boardList.bo">게시판</a>
+						<a href="${pageContext.request.contextPath}/board/boardList.bo?tag='문의'">문의</a>
 					</li>
 
 					<li>
@@ -88,7 +81,9 @@
 	            		<a href="${pageContext.request.contextPath}/item/itemlist.bo">상품판매</a>
 	            	</li>
 	            	
-           		 	<li><a href="#">베지팜소개</a></li>
+           		 	<li>
+           		 		<a href="${pageContext.request.contextPath}/board/vegFarm.bo">베지팜소개</a>
+           		 	</li>
             	</ul>
 			</div>
 		</div>

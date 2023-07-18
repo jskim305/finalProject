@@ -42,44 +42,45 @@
       	<hr><br>
       	
           <h4>구매자정보 (ID : ${loginMember.memId})</h4>
-          <table class="orders-table">
+          <table class="orders-table1">
 				<tr>
 					<td>이름</td>
-					<td class="noRight">${loginMember.memName}</td>
+					<td>${loginMember.memName}</td>
 				</tr>
 				
 				<tr>
 					<td>이메일</td>
-					<td class="noRight">${loginMember.memEmail}</td>
+					<td>${loginMember.memEmail}</td>
 				</tr>
 				
 				<tr>
 					<td>휴대폰 번호</td>
-					<td class="noRight">${loginMember.memTel}</td>
+					<td>${loginMember.memTel}</td>
 				</tr>
           </table>
 			<br><br>
 			
-		<form action="${pageContext.request.contextPath}/orders/ordersPayment.or" method="post">
+		<%-- <form action="${pageContext.request.contextPath}/orders/ordersPayment.or" method="post"> --%>
+		<form>
           <h4>받는사람정보&emsp;<input type="button"  id="addrEditBtn" value="정보 변경"></h4>
-          <table class="orders-table">
+          <table class="orders-table1">
 				<tr>
 					<td> 이름 </td>
-		            <td class="noRight">
+		            <td>
 		              <input type="text" id="ordersName" name="ordersName" value="${loginMember.memName}"  readonly style="border:none; font-size:15px">
 		            </td>
 				</tr>
 				
 				<tr>
 					<td> 배송주소</td>
-					<td class="noRight">
+					<td>
 						<input type="text" id="ordersAddr" name="ordersAddr" value="${loginMember.memAddr}" readonly style="border:none; font-size:15px">
 					</td>
 				</tr>
 				
 				<tr>
 					<td>연락처</td>
-					<td class="noRight">
+					<td>
 						<input type="text" id="ordersTel" name="ordersTel" value="${loginMember.memTel}" readonly style="border:none; font-size:15px">
 					</td>
 				</tr>
@@ -152,78 +153,13 @@
 				
 	            <td width="80%">
             	  <input type="radio" id="paymentMethod" name="paymentMethod" value="dwob" checked>
-            	  <label for="paymentMethod">무통장입금(가상계좌)</label>
-            	  
-            	  <table>
-            	  	<tr>
-            	  		<td width="20%">입금은행</td>
-            	  		<td width="80%">
-            	  			<select id="bank" name="bank" style="font-size:13pt">
-            	  				<option value="notSelect">선택</option>
-            	  				<option value="농협은행">농협은행</option>
-            	  				<option value="국민은행">국민은행</option>
-            	  				<option value="신한은행">신한은행</option>
-            	  				<option value="우리은행">우리은행</option>
-            	  				<option value="KEB하나은행">KEB하나은행</option>
-            	  				<option value="기업은행">기업은행</option>
-            	  				<option value="대구은행">대구은행</option>
-            	  				<option value="부산은행">부산은행</option>
-            	  				<option value="우체국">우체국</option>
-            	  				<option value="경남은행">경남은행</option>
-            	  				<option value="광주은행">광주은행</option>
-            	  				<option value="SC제일은행">SC제일은행</option>
-            	  				<option value="수협은행">수협은행</option>
-            	  			</select>
-            	  		</td>
-            	  	</tr>
-            	  	
-            	  	<tr>
-            	  		<td>입금기한</td>
-            	  		<td>
-            	  			<div id="deadLine"></div>
-							<script>
-								// 현재 날짜와 시간을 얻기 위해서 Date 객체를 생성합니다.
-								var today = new Date();
-								// 시간 정보를 가져옵니다.
-								var time = today.getHours();
-								
-								// 마감 시간을 설정하기 위한 변수를 초기화합니다.
-								var deadline;
-								
-								// 현재 시간이 16시 이전이면 오늘을 기준으로 설정합니다.
-								if (time <= 16) {
-								  deadline = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 18, 30); // 18시 30분이 마감시간
-								}
-								else {
-								  // 현재 시간이 16시 이후면 내일을 기준으로 설정합니다.
-								  var tomorrow = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1, 9, 30); // 9시 30분이 마감시간
-								  deadline = tomorrow;
-								}
-								
-								// 마감 날짜 및 시간을 "월/일 시간" 형식으로 출력하기 위한 함수를 생성합니다.
-								function formatDate(date) {
-								  var month = ('0' + (date.getMonth() + 1)).slice(-2);
-								  var day = ('0' + date.getDate()).slice(-2);
-								  var hour = ('0' + date.getHours()).slice(-2);
-								  var minute = ('0' + date.getMinutes()).slice(-2);
-
-								  return month + "월 " + day + "일 " + hour + "시 " + minute + "분까지";
-								}
-
-								// 위에서 정의한 함수를 이용해서 deadline을 문자열로 변환한 후 출력합니다.
-								var deadlineString = formatDate(deadline);
-								document.getElementById("deadLine").innerHTML = deadlineString;
-							</script>
-            	  		</td>
-            	  	</tr>
-            	  </table>
+            	  <label for="paymentMethod">카카오페이</label>
 	            </td>
 			</tr>
-          </table>
-          
+		  </table>
           <br><hr class="mb-4">
           
-          <button class="sanda-button" type="submit">결제하기</button>
+          <button class="sanda-button" id="iamport">결제하기</button>
           
 		</form>
 
@@ -234,6 +170,48 @@
 
 
 <script>
+	document.querySelector("#addrEditBtn").addEventListener('click', (e) => {
+		var price = document.getElementById('ordersPrice').value;
+		console.log(price);
+	    //가맹점 식별코드
+	    IMP.init('imp13608827');
+	    IMP.request_pay({
+	       pg : 'kakaopay',
+	       pay_method : 'card', //생략 가능
+	       merchant_uid: "order_no_0001" + new Date().getTime(),
+	        //merchant_uid: "order_no_0001", // 상점에서 관리하는 주문 번호
+	        //merchant_uid : 'merchant_' + new Date().getTime(),
+	        name : 'vegFarm', //결제창에서 보여질 이름
+	        amount : 100, //실제 결제되는 가격
+	        buyer_email : 'iamport@siot.do',
+	        buyer_name : '구매자이름',
+	        buyer_tel : '010-1234-5678',
+	        buyer_addr : '서울 강남구 도곡동',
+	        buyer_postcode : '123-456'
+	    }, function(rsp) {  // callback 로직
+	       console.log(rsp);
+	        if ( rsp.success ) {
+	           var msg = '결제가 완료되었습니다.';
+	            msg += '고유ID : ' + rsp.imp_uid;
+	            msg += '상점 거래ID : ' + rsp.merchant_uid;
+	            msg += '결제 금액 : ' + rsp.paid_amount;
+	            msg += '카드 승인번호 : ' + rsp.apply_num;
+/* 	            
+	            $.ajax({
+	            	url : "${pageContext.request.contextPath}/orders/ordersPaymemt.or";
+	            	method: "post";
+	            	data : {}
+	            });
+ */	            
+	            
+	        } else {
+	            var msg = '결제에 실패하였습니다.';
+	             msg += '에러내용 : ' + rsp.error_msg;
+	        }
+	        alert(msg);
+	    }
+	});
+
 	document.querySelector("#addrEditBtn").addEventListener('click', (e) => {
 		$('#ordersName').prop('readonly', false);
 		$('#ordersName').prop('required', true);

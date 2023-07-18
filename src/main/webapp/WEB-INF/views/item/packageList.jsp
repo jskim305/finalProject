@@ -5,6 +5,9 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <head>
 	<link href="${pageContext.request.contextPath}/resources/css/package.css?v=<%System.currentTimeMillis(); %>" rel="stylesheet" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap" rel="stylesheet">
 </head>
 
 <jsp:include page="/WEB-INF/views/common/header.jsp">
@@ -18,7 +21,7 @@
 	</div>
 </div>
 
-<div class="container" style="width: 1200px;">
+<div class="container" style="width: 1210px;">
 	<main class="pakge-main">
 		<div class="package-List">
 			<%--<form action="${pageContext.request.contextPath}/item/packageList.bo" method="get"> --%>
@@ -29,9 +32,11 @@
 								<img src="${pageContext.request.contextPath}/resources/images/itemlogo/${pac.itemLogo}" alt="logo">
 								<h2>${pac.itemName}</h2>
 								<p><fmt:formatNumber value="${pac.itemPrice}" pattern="#,###"/>원</p>
-								<div class="package-card-but">
-									<a href="${pageContext.request.contextPath}/item/pacForm.bo?itemNo=${pac.itemNo}">바로가기</a>
+									<a href="${pageContext.request.contextPath}/item/pacItem.bo?itemNo=${pac.itemNo}">
+								<div class="package-card-btn">
+									<p>바로가기</p>
 								</div>
+									</a>
 							</div>
 					</c:forEach>
 				</div>

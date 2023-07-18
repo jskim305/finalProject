@@ -4,6 +4,6 @@ import com.kh.finalProject.farm.model.vo.Farm;
 
 public interface FarmService {
 
-	Farm selectFarmById(int farmNo);
+	Farm selectFarmById(int farmId);
 
 }

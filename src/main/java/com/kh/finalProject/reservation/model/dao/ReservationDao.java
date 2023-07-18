@@ -9,12 +9,14 @@ import com.kh.finalProject.reservation.model.vo.Reservation;
 @Mapper
 public interface ReservationDao {
 
-	int insertReservation(Reservation reservation);
-
-	List<Reservation> getadminRezList(); // 관리자 예약 현황
-
-	void adminRezDelete(String rezNo); // 관리자 예약 삭제
-
-	int adminRezUpdate(Reservation reservation); // 관리자 예약 변경
+	//예약-------------------------------------------------------
+	int insertReservation(Reservation reservation); //예약 insert, 기존 sector status update
+	void updateSectorStatus(Reservation reservation); 
+	
+	//관리자페이지--------------------------------------------------
+	List<Reservation> getadminRezList(); // 예약 List
+	void adminRezDelete(String rezNo); // 예약 delete
+	void adminRezDeleteForUpdate(String rezNo); // delete시에 기존 sector값 초기화
+	int adminRezUpdate(Reservation reservation); // 예약 update
 
 }

@@ -1,4 +1,16 @@
-/*아이템 메인페이지 로고*/
+.item-container {
+	width: 1200px;
+	margin: 0 auto;
+}
+button:hover {
+	font-weight: bold;
+	  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+}
+button {
+	cursor: pointer;
+}
+
+/* 아이템 메인페이지 로고 */
 .item-logo {
 	background-image: url(../images/apples-g77b740d55_1920.jpg);
 	background-position: center;
@@ -10,240 +22,56 @@
 	justify-content: center;
 	align-items: center;
 }
-.item-logo-text{
+
+.item-logo-text {
 	width: 1200px;
 }
-.item-logo>.item-logo-text> p{
+
+.item-logo>.item-logo-text> p {
 	color: white;
 	text-align: center;
 	font-weight: bold;
-	color: rgb();
 }
-.item-logo>.item-logo-text> #text1{
+
+.item-logo>.item-logo-text> #text1 {
 	font-size: 70px;
 }
 
-/*-sidebar*/
+/* -sidebar */
 aside {
-	width : 150px;
-	height: 800px;
+	width: 150px;
 	background: #f9f9f9;
 	display: inline-block;
 	float: left;
 	margin: 10px 0;
 	padding: 15px;
+	height: 700px;
+	
 }
+
 .sidebar>li {
 	margin: 15px;
 	font-size: small;
 }
-.sidebar>li li{
+
+.sidebar>li li {
 	margin: 5px 0 0 20px;
 	font-size: small;
-}
-/*iteme-------------------------------------*/
-
-.card {
-  transition: all 0.2s linear;
-}
-.card:hover  {
-  transform: scale(1.1);
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
-   border-radius: 10px 10px 10px 10px;
-}
-.itemList-main .card {
-	display: inline-block;
-	float: left;
-	background: #f9f9f9;
-	padding: 10px;    
-	width: 210px;
-	align-items: center;
-	text-align: center;
-}
-.itemList-main .card img {
-	 object-fit: cover;
-	width: 100%;
-	height: 160px;
-	
-    border-radius: 20px 20px 20px 20px;
-}
-
-.itemList-main .card h5 {
-	margin: 5px 0;
-	color: #F07D00;
-}
-
-.itemList-main .card p {
-	margin: 5px 0;
-	font-size:10px;
-	font-weight: bold;
-}
-.item-main {
-	width: 1200px;
-	height: 1500px;
-}
-/* 상품 글쓰기 버튼 */
-.iteminsert-btn {
-  padding: 10px 20px;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-}
- .iteminsert-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
-}
-
- .ListInsert-btn{
-	display: inline-block;
-    width: 915px;
-    padding-top: 1px;
-    height: 34px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    font-size: 12px;
-    background-color: #52AE32;
-    border-color: #52AE32;
-    color: #fff;
-} 
- .ListInsert-btn:hover {
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
-}
-/*item 상세페이지*/
-
-/* 아이템 삭제 버튼 */
-.remove-button{
-	display: block;
-    width: 45px;
-    padding-top: 1px;
-    height: 34px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    font-size: 7px;
-    background-color: #ff3e3e;
-    border-color: #ff3e3e;
-    color: #fff;
-}
-#item-select {
-	width: 900px;
-	height: 500px;
-	margin: 50px 0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-/*상세페이지 로고 이미지*/
-#itemSelect-img{
-	width: 450px;
-	height: 450px;
-	margin: 20px;
-}
-
-#itemSelect-img>img{
-	object-fit: cover;
-	width: 400px;
-	height: 400px;
-	margin: 30px;
-    border-radius: 20px 20px 20px 20px;
-}
-/*상세페이지 설명 박스*/
-.info-area {
-	width: 450px;
-	height: 450px;
-	flex-direction: column;
-	justify-content: center;
-	align-items: flex-start;
-}
-
-.info-area_name{
-	padding: 20px 0;
-    border-bottom: 1px solid #ccc;
-}
-.info-area_price {
-	padding: 20px 0;
-    border-bottom: 1px solid #ccc;
-}
-.info-area_title {
-	width: 100px;
-	display: inline-block;
-	text-align: center;
-}
-.info-area_farm {
-	width:250px;
-	display: inline-block;
-}
-.info-area_farmBox {
-	padding: 20px 0;
-    border-bottom: 1px solid #ccc;	
-}
-.item-sulyangBox {
-	padding: 20px 0;
-    border-bottom: 1px solid #ccc;	
-}
-.item-sulyangBox>form {
-	width: 50px;
-	display: inline-block;
-	}
-.info-area_total {
-	padding: 20px 0;
-    border-bottom: 1px solid #ccc;
-	display: inline-block;
-	width: 80%;
-}
-.info-area_number{
-	display: inline-block;	
-}	
-.info-area_number>input{
-	width: 50px;	
-  	font-size: 30px;
- 	border: 0;
-}	 
-/* 상품금액 상자 -----------------------------*/
-.info-area_priceBox{
-	height: 40px;
-	width:95%;
-    display: inline-block;
-    margin: auto;
-    padding: 20px;
-    text-align: right; 
-}
-.info-area_priceBox>span{
-	width: 100px;	
- 	border: 0;
- 	font-size: 30px;
-}
-/* 장바구니 버튼---------------------------- */
-.info-area_btn {
-	display: block;
-	text-align: center;
-	width: 100%;
-}
-#info-area_btn {
-	width : 100%;
-	height : 70px;
-    background: #918c00;
-    border: 1px solid #918c00;
-    color: #FFF;
-    font-size: 20px;
-}
-/* 상품설명 상자---------------------------- */
-.info-area_content {
-	display: block; 
 }
 /*itemList---------------------------------- */
 .itemList-main {
 	display: inline-block;
-	width : 1000px;
-	height: 1000px;
 	margin: 20px 0;
+	font-family: 'Noto Sans KR', 산세리프;
+	width: 1050px;
+	background: #f9f9f9;
 }
 
 .itemList-main .card {
 	display: inline-block;
 	float: left;
 	background: #f9f9f9;
-	padding: 10px;    
+	padding: 10px;
 	width: 210px;
 	align-items: center;
 	text-align: center;
@@ -254,41 +82,259 @@ aside {
 	height: 160px;
 	object-fit: cover;
 	margin-bottom: 10px;
-    border-radius: 20px 20px 20px 20px;
+	border-radius: 20px;
 }
 
-.itemList-main .card h5 {
+.itemList-main .itemName {
 	margin: 5px 0;
 	color: #F07D00;
+	font-weight:bold; 
+	font-size: 14px;
+}
+
+.card {
+	transition: all 0.2s linear;
+}
+
+.card:hover {
+	transform: scale(1.1);
+	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+	border-radius: 10px;
+	z-index: 2;
+}
+
+.itemList-main .card p {
+	margin: 5px 0;
+	font-size: 10px;
+	font-weight: bold;
+}
+/* 아이템 추가 버튼 */
+.ListInsert-btn {
+    display: inline-block;
+    width: 100%;
+    padding-top: 1px;
+    height: 34px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    font-size: 12px;
+    background-color: #52AE32;
+    border-color: #52AE32;
+    color: #fff;
+}
+/*상품리스트로 돌아가기 버튼*/
+.List-btn {
+    display: inline-block;
+    width: 100%;
+    padding-top: 1px;
+    height: 34px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    font-size: 12px;
+	background-color: transparent;
+	color: rgb(119, 119, 119);
+}
+
+/*item 상세페이지*/
+
+
+/* 아이템 삭제 버튼 */
+.remove-button {
+	display: block;
+	width: 45px;
+	padding-top: 1px;
+	height: 34px;
+	margin-top: 5px;
+	border: 1px solid #ccc;
+	font-size: 7px;
+	background-color: #ff3e3e;
+	border-color: #ff3e3e;
+	color: #fff;
+}
+
+.modal-header{
+	height: 70px;
+}
+
+.Update-button {
+	display: block;
+	width: 45px;
+	padding-top: 1px;
+	height: 34px;
+	margin-top: 5px;
+	border: 1px solid #ccc;
+	font-size: 7px;
+	background-color: #ff3e3e;
+	border-color: #ff3e3e;
+	color: #fff;
+}
+.modal-title{
+	margin-left: 20px;
+	font-size: 30px; 
+}
+#item-select {
+	width: 815px;
+	height: 400px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/*상세페이지 로고 이미지*/
+#itemSelect-img {
+	width: 350px;
+	height: 400px;
+}
+
+#itemSelect-img>img {
+	object-fit: cover;
+	width: 300px;
+	height: 400px;
+	border-radius: 20px;
+}
+
+/*상세페이지 설명 박스*/
+.info-area {
+	width: 400px;
+	height: 350px;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	
+}
+.info-area_title {
+	width: 49%;
+	display: inline-block;
+	text-align: left;
+}
+/* 상품 이름상자 ---------------------------*/
+.info-area_name {
+	font-size: 30px;
+	font-weight: bold;
+}
+/* 상품 가격 상자 ---------------------------*/
+.info-area_price {
+	font-size: 29px;
+	width: 49%;
+	display: inline-block;
+	text-align: left;
+}
+#modalItemPrice{
+	margin-left: 15px;
+	font-size: 30px;
+}
+.won{
+	font-size: 15px;
+}
+/* 재고 수량 상자 ----------------------------*/
+.info-area_itemCount{
+	text-align:right;
+	width:49%;
+	display: inline-block;
+	font-style :#b8b8b8;
+	padding-right: 10px;
+}
+/* 생산지 상자 ------------------------------*/
+.info-area_farmBox {
+	width: 100%;
+	display: inline-block;
+	padding: 5px 10px 20px 10px;
+	text-align: right;
+	border-bottom: 1px solid #ccc;
+}
+
+.info-area_farm {
+	text-align:right;
+	width:49%;
+	display: inline-block;
+}
+#modalItemLocal{
+	font-size: 20px;
+    color: #b8b8b8;
+    margin-top: 5px;
+}
+/* 수량 상자-------------------------------- */
+.item-sulyangBox {
+	margin-top:20px;
+	width: 100%;
+	display: inline-block;
+	padding: 5px 10px;
+	text-align: right;
+}
+
+.info-area_number {
+	text-align:right;
+	width:49%;
+	display: inline-block;
+}
+
+/* 상품금액 상자 -----------------------------*/
+.info-area_priceBox {
+	width: 100%;
+	display: inline-block;
+	margin: auto;
+	padding: 5px 10px;
+	text-align: right;
+}
+.total_price {
+	text-align:right;
+	width:49%;
+	display: inline-block;
+}
+#total_price {
+	font-size: 30px;
+	padding-right: 5px;
+}
+/* 장바구니 버튼---------------------------- */
+.info-area_btn {
+	margin-top: 20px;
+	display: block;
+	text-align: center;
+	width: 100%;
+	margin-bottom: 0;
+}
+#info-area_btn {
+	width: 100%;
+	height: 70px;
+	background: #918c00;
+	border: 1px solid #918c00;
+	color: #FFF;
+	font-size: 20px;
+}
+
+/* 상품설명 상자---------------------------- */
+.info-area_content {
+	display: block;
 }
 
 /* 아이템 글쓰기 페이지 ---------------*/
 .item-Form-main {
+    padding: 111 0;
 	display: flex;
 	justify-content: center;
-	margin:  100px auto 250px ;
-	display: inline-block;
-	width : 800px;
+	width: 700px;
 	text-align: center;
 }
-.item-Form-main h1{
+
+.item-Form-main h1 {
 	margin: 20px;
 }
+
 .item-Form-main table {
-  width: 90%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
+	width: 90%;
+	border-collapse: collapse;
+	margin-bottom: 20px;
+	height: 
 }
 
 .item-Form-main th,
 .item-Form-main td {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-  text-align: center;
-  width: 300px;
+	padding: 10px;
+	border-bottom: 1px solid #ddd;
+	text-align: center;
+	width: 300px;
 }
 
 .item-Form-main td input {
-  width: 100%;
-  padding: 5px;
+	width: 100%;
+	padding: 5px;
 }

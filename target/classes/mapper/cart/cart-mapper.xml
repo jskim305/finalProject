@@ -11,7 +11,7 @@
 	insert into
 	  cart
 	values (
-		sql_cart_no.nextval,
+		seq_cart.nextval,
 		#{memId},
 		#{itemNo},
 		#{cartCount}

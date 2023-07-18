@@ -1,7 +1,5 @@
 package com.kh.finalProject.reply.model.vo;
 
-import java.sql.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,5 +16,5 @@ public class Reply {
 	private int boardNo;
 	private String replyWriter;
 	private String replyContent;
-	private Date replyCreate;
+	private String replyCreate;
 }

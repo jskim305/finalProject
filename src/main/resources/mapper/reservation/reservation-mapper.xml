@@ -5,31 +5,46 @@
  
 <mapper namespace="com.kh.finalProject.reservation.model.dao.ReservationDao">
 <resultMap type="reservation" id="reservationMap"></resultMap>
+	
 	<insert id="insertReservation">
 		insert into reservation
 		values (
-			#{rNo},
-			#{mId},
-			#{fNo},
-			#{rZone},
-			#{rStatus},
-			#{rStart},
-			#{rPrice},
-			#{rItem}
-		  )
+			#{rezNo},
+			#{memId},
+			#{farmNo},
+			#{rezZone},
+			#{rezStatus},
+			#{rezStart},
+			#{rezPrice},
+			#{rezItem}
+		  )		  
 	</insert>
+	
+	<update id="updateSectorStatus">
+		UPDATE sector
+		SET SECTOR_STATUS = '1'
+		WHERE SECTOR_NO = #{rezZone}
+	</update>
 
-<!-- 관리자 -->
+	<!-- 관리자 -->
 	<select id="getadminRezList" resultMap="reservationMap">
 		select *
 		from RESERVATION
 	</select>
-	
+		
     <delete id="adminRezDelete">
 		DELETE
 		FROM RESERVATION
-		WHERE REZ_NO = #{rezNo}	
+		WHERE REZ_NO = #{rezNo}
 	</delete>
+	
+	<!-- delete시에 sector값 초기화 -->
+	<update id="adminRezDeleteForUpdate">
+		UPDATE sector
+		SET SECTOR_STATUS = '0'
+		WHERE SECTOR_NO = #{rezZone}
+	</update>
+	
 	<update id="adminRezUpdate">
 		UPDATE RESERVATION
 		SET REZ_NO = #{rezNo},
@@ -42,7 +57,6 @@
 			REZ_ITEM = #{rezItem}
 		WHERE REZ_NO = #{rezNo}
 	</update>
- 
 
 
 </mapper>

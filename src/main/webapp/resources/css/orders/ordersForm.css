@@ -3,13 +3,13 @@
 .closeBtn{
 	float: right;
 }
-
+/* 
 table {
 	width: 100%;
 	border-top: 1px solid #444444;
 	border-collapse: collapse;
 }
-/* th, td {
+th, td {
 	border-bottom: 1px solid #444444;
 	border-left: 1px solid #444444;
 	padding: 10px;
@@ -22,6 +22,29 @@ table {
 	border-collapse: collapse;
 	position: relative;
 	width: 800px;
+}
+
+.orders-table1 {
+    margin: auto;
+	border-collapse: collapse;
+	position: relative;
+	width: 800px;
+}
+
+.orders-table1 td {
+	border-top: 2px solid #eee;
+	border-bottom: 2px solid #eee;
+	padding: 8px;
+	position: relative;
+}
+
+.orders-table1 td:first-child {
+	width: 205px;	
+}
+
+.orders-table1 td:nth-child(2) {
+	
+	border-left: 1px solid #ccc;
 }
 
 .orders-table td {

@@ -32,17 +32,16 @@ public class ItemController {
 	@GetMapping("/paclist.bo")
 	public String paclist(Model model) {
 		List<Item> paclist = itemService.selectPacList();
-		
 		model.addAttribute("paclist", paclist);
 		return "/item/packageList";
 	}
 	//패키지 상품 페이지
-	@GetMapping("pacForm.bo")
-	public String pacForm(@RequestParam int itemNo, Model model) {
-		Item pacForm = itemService.selectOnePac(itemNo);
+	@GetMapping("pacItem.bo")
+	public String pacItem(@RequestParam int itemNo, Model model) {
+		Item pacItem = itemService.selectOnePac(itemNo);
 		List<Item> paclist = itemService.selectPacList();
 		model.addAttribute("paclist", paclist);
-		model.addAttribute("pacForm", pacForm);
+		model.addAttribute("pacItem", pacItem);
 		return "/item/package";
 	}
 
@@ -53,10 +52,10 @@ public class ItemController {
 		return "/item/itemList";
 	}
 
-	@GetMapping("itemForm.bo")
-	public String itemForm(@RequestParam int itemNo, Model model) {
-		Item itemForm = itemService.selectOneitem(itemNo);
-		model.addAttribute("itemForm", itemForm);
+	@GetMapping("item.bo")
+	public String item(@RequestParam int itemNo, Model model) {
+		Item item = itemService.selectOneitem(itemNo);
+		model.addAttribute("item", item);
 		return "/item/item";
 	}
 	//카테고리 값 자동입력 테스트
@@ -76,12 +75,14 @@ public class ItemController {
 	
 	@PostMapping("/insertItem.bo")
 	public String insertItem(String ItemType,Item item, RedirectAttributes redirectAttr) {
+		System.out.println(ItemType);
+		System.out.println(item);
+		System.out.println(redirectAttr);
 		if(ItemType.equals("item")) {
 			int result = itemService.insertItem(item);
 		}if(ItemType.equals("package")) {
 			int result = itemService.insertPac(item);
 		}
-		
 		redirectAttr.addFlashAttribute("msg", "정상적으로 저장했습니다.");
 		return "redirect:/item/itemlist.bo";
 	}

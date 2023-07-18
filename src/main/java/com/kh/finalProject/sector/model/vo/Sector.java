@@ -10,7 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Sector {
-	private String sectorNo;
+	private int sectorNo;
 	private int farmNo;
 	private String sectorName;
 	private int sectorPrice;

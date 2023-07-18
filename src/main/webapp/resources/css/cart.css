@@ -1,13 +1,21 @@
-.cartList-main  {
-	width:1300px;
-	height:1000px;
+button:hover{
+	font-weight: bold;
+}
+button{
+	cursor:pointer;
+}
+.cartList-main{
+	font-family: 'Noto Sans KR', 산세리프;
+	width:1200px;
 	text-align:center;
 	margin: 0 auto;
-}
+}	
+
 .cart-container {
 	display: inline-block;
-	width: 800px;
-	margin-left: -300px;
+	width: 1050px;
+	position: relative;
+
 }
 /*아이템 메인페이지 로고*/
 .cart-logo {
@@ -34,11 +42,15 @@
   	justify-content: flex-start; 	
 }
 /*장바구니 테이블*/
+.cart-table-box{
+	width: 700px;
+	display: inline-block;
+}
 .cart-table {
-    margin: auto;
+	position: sticky;
 	border-collapse: collapse;
-	position: relative;
-	width: 800px;
+	width: 100%;
+	display: inline-block;
 }
 
 .cart-table td {
@@ -51,6 +63,10 @@
 	color : rgb(119, 119, 119);
 	margin-left: 20px; 
 	font-size: 13px;
+	cursor:pointer;
+}
+#selectAllBtn:hover{
+	font-weight: bold; 
 }
 .cart-table tr:first-child {
 	padding: 20px;
@@ -66,17 +82,17 @@
 .cart-table td:nth-child(2)>a>img {
 	object-fit: cover;
 	width: 100px;
-	height: 80px;
+	height: 100px;
 }
 
 /* 두 번째 td에 스타일 적용 */
 .cart-table td:nth-child(3) {
-	width: 370px;
+	width: 250px;
 }
 
 /* 세 번째 td에 스타일 적용 */
 .cart-table td:nth-child(4) {
-	width: 170px;
+	width: 150px;
 	border-left: 1px solid #ccc;
     border-right: 1px solid #ccc;
 }
@@ -116,9 +132,7 @@
     font-size: 15px;
     background-color: white;
 }
-.decrement-btn:hover{
-	border: 1px solid black;  
-}
+
 .increment-btn{
 	display: inline-block;
     width: 30px;
@@ -132,9 +146,7 @@
     background-color: white;
    	color: rgb(119, 119, 119); 
 }
-.increment-btn:hover{
-	border: 1px solid black;  
-}
+
 .quantity-input{	
 	text-align:right;
 	display: inline-block;
@@ -149,7 +161,6 @@
 }
 
 .CountUpDate-btn{
-	margin-top: -3px;
 	display: inline-block;
     width: 50px;
     padding-top: 1px;
@@ -194,20 +205,21 @@
     font-size: 12px;
 }
 .cart-bar-box {
-	position: fixed;
-	top: 333px;
+	float: right;
+	position: sticky;
+	top: 0;
 	margin-top: 0;
 	width: 300px;
 	display: inline-block;
 	justify-content: flex-start;
+	margin-bottom: auto;
 }
 .cart-bar {
 	border: 1px solid #ccc;
-	width: 230px;
+	width: 100%;
 	font-size: 13px;
 	padding: 10px;
-	margin-left:30px;
-	ma
+
 }
 .cart-bar td{
 	height: 20px;
@@ -236,7 +248,7 @@
 
 .all-cart-buy-btn {
     display: block;
-    width: 280px;
+    width: 100%;
     margin: 10px auto;
     height: 70px;
     border: 1px solid #ccc;

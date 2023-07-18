@@ -48,7 +48,8 @@
             
             <div class="col-md-6 mb-3">
               <label for="mTel">전화번호</label>
-              <input type="tel" class="form-control" id="mTel" name="memTel"  placeholder="010-1234-5678" required>
+              <span style="color: red; font-size: 14px;" id="ckTel" ></span>
+              <input type="tel" class="form-control" id="mTel" name="memTel"  placeholder="숫자만 입력" required>
             </div>
             
             <div class="col-md-6 mb-3">
@@ -164,6 +165,24 @@
 			document.getElementById('ckRePwd').textContent = "잘못 입력되었습니다	";
   		}
  	}
+ 	
+  	
+ // Tel 유효성검사
+  	document.getElementById('mTel').onkeyup = function() {
+  	 	var msg = '';
+  		var pwdExp = /^[0-9]{9,11}$/;
+		var memPwd = this.value;
+		
+		if(pwdExp.test(memPwd)){
+			document.getElementById('ckTel').style.color="green";
+			document.getElementById('ckTel').textContent = "사용 가능";
+		}
+		else{
+			document.getElementById('ckTel').style.color="red";
+			document.getElementById('ckTel').textContent = "사용 불가능";
+		}
+  	}
+ 	
   	
   </script>
   

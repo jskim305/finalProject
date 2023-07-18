@@ -78,7 +78,8 @@
 <br><br>
 
 <div id="container">
-    <h2>게시글 작성</h2>
+	 <h2>${tag} 게시글 작성</h2>
+	
     <form action="${pageContext.request.contextPath}/board/boardEnroll.bo" method="post" name="enrollfrm" >
         <div class="form-group">
             <label for="boardTitle">제목</label>
@@ -86,15 +87,15 @@
         </div>
         <div class="form-group">
             <label for="boardWriter">작성자</label>
-           <%--  <input type="text" id="boardWriter" name="boardWriter" value="${loginMember.userId}" required> --%>
-           <input type="text" id="boardWriter" name="boardWriter">
+           <input type="text" id="boardWriter" name="boardWriter" value="${loginMember.memId}" readonly>
+     	   <input type="hidden" name="boardTag" value="${tag}">
         </div>
         <!-- <div class="form-group">
             <label for="boardTag">게시글 구분</label>
             <input type="text" id="boardTag" name="boardTag" required>
         </div> -->
         
-        <input type="hidden" name="boardTag" value="문의">  
+        
         
          <!--네임은 키와 값으로 들어감    -->
         

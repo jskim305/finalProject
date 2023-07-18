@@ -24,12 +24,16 @@
         height: 30px;
     }
 
-    textarea[name="BContent"], input[name="BTitle"] {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
+    
+    
+     textarea {
+    width: 100%;
+    height: 150px;
+    height: 6.25em;
+    border : none;
+    resize: none;
+   
+}
 </style>
 
 <jsp:include page="/WEB-INF/views/common/header.jsp">
@@ -40,6 +44,7 @@
 
 <div id="container">
     <form action="${pageContext.request.contextPath}/board/boardUpdate.bo" method="post">
+      <h2>수정 게시판</h2>
         <table class="table">
             <tr>
                 <th scope="col">제목</th>
@@ -47,7 +52,8 @@
             </tr>
             <tr>
                 <th scope="col">작성자</th>
-                <td scope="col">${board.boardWriter}</td>
+                <!-- 수정 : 게시글 작성자의 id를 받기 위해서 input태그로 변경함 -->
+                <td scope="col"><input type="text" id="boardWriter" name="boardWriter" value="${board.boardWriter}" readonly></td>
             </tr>
             <tr>
                 <th scope="col">내용</th>
@@ -64,8 +70,10 @@
                 <td scope="col">${board.boardCreate}</td>
             </tr>
         </table>
+        <!-- 수정 : 작성자와 로그인유저가 같은지 확인하기 위해서 userId라는 히든을 만들어서 같이 넘겨줬음 -->
 		<input type="hidden" name="boardNo" value="${board.boardNo}">
-		
+		<input type="hidden" name="boardTag" value="${board.boardTag}">
+		<input type="hidden" name="userId" value="${loginMember.memId}">
 		
         <div class="button-group">
             <input type="submit" value="수정완료" class="btn-update">

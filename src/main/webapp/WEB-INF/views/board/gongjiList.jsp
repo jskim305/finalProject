@@ -87,6 +87,24 @@
 		background-color: #4caf50;
 		color: #fff;
 	}
+	.table {
+		border-collapse: collapse;
+		width: 100%;
+	}
+
+	.table th, .table td {
+		padding: 10px;
+		border: none; /* 세로 선 제거 */
+	}
+
+	.table th {
+		background-color: #f2f2f2;
+		font-weight: bold;
+	}
+
+	.table td {
+		border-bottom: 1px solid #ccc; /* 가로 선 유지 */
+	}
 </style>
 
 <jsp:include page="/WEB-INF/views/common/header.jsp">
@@ -104,7 +122,7 @@
 			<th scope="col">작성일</th>
 			<th scope="col">조회수</th>
 		</tr>
-		<c:forEach items="${boardList}" var="board">
+		<c:forEach items="${GongjiList}" var="board">
 			<tr>
 				<td>${board.boardNo}</td> 
 				<td><a href="${pageContext.request.contextPath}/board/boardDetail.bo?boardNo=${board.boardNo}">${board.boardTitle}</a></td>
@@ -120,38 +138,40 @@
 			</td>
 	  </div>
 	
+	<br><br><br><br>
 	<nav aria-label="Page navigation example">           <!-- 게시글 1,2,3 등과 같이 밑에 페이지 설정 -->
 		<ul class="pagination justify-content-center">
 			<c:if test="${pi.nowPage ne 1}">
 				<li class="page-item">
-					<a class="page-link" href="${pageContext.request.contextPath}/board/boardList.bo?nowPage=${pi.nowPage-1}" >Previous</a>
+					<a class="page-link" href="${pageContext.request.contextPath}/board/gongjiList.bo?nowPage=${pi.nowPage-1}" >Previous</a>
 				</li>
 			</c:if>
 			<c:forEach var="p" begin="${pi.startPage}" end="${pi.endPage}">
 				<c:choose>
 					<c:when test="${p eq pi.nowPage}">
 						<li class="page-item active">
-							<a class="page-link" href="${pageContext.request.contextPath}/board/boardList.bo?nowPage=${p}">${p}</a> <!-- 현재 페이지 표시 -->
+							<a class="page-link" href="${pageContext.request.contextPath}/board/gongjiList.bo?nowPage=${p}">${p}</a> <!-- 현재 페이지 표시 -->
 						</li>
 					</c:when>
 					<c:otherwise>
 						<li class="page-item">
-							<a class="page-link" href="${pageContext.request.contextPath}/board/boardList.bo?nowPage=${p}">${p}</a> <!-- 다른 페이지 표시 -->
+							<a class="page-link" href="${pageContext.request.contextPath}/board/gongjiList.bo?nowPage=${p}">${p}</a> <!-- 다른 페이지 표시 -->
 						</li>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
 			<c:if test="${ pi.nowPage ne pi.totalPage }">
 				<li class="page-item">
-					<a class="page-link" href="${pageContext.request.contextPath}/board/boardList.bo?nowPage=${pi.nowPage+1}">Next</a>
+					<a class="page-link" href="${pageContext.request.contextPath}/board/gongjiList.bo?nowPage=${pi.nowPage+1}">Next</a>
 				</li>
 			</c:if>
 		</ul>
 	</nav>
 </div>
+<br><br><br><br>
 <script>
 	document.querySelector("#enrollBtn").addEventListener('click', (e) => {
-		location.href='${pageContext.request.contextPath}/board/boardForm.bo'; <!-- 버튼을 클릭했을 때 글쓰기 페이지로 이동 -->
+		location.href='${pageContext.request.contextPath}/board/boardForm.bo?tag=공지사항'; <!-- 버튼을 클릭했을 때 글쓰기 페이지로 이동 -->
 	});
 </script>
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

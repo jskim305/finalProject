@@ -7,8 +7,8 @@
     body {
         font-family: Arial, sans-serif;
         background-color: #f2f2f2;
-        margin: 0;
-        padding: 0;
+        width: 100%;
+        margin: 0 auto;
     }
 
     #container {
@@ -62,22 +62,35 @@
         background-color: #ccc;
         margin-left: 10px;
     }
+
+    textarea {
+        width: 100%;
+        height: 150px;
+        height: 6.25em;
+        border: none;
+        resize: none;
+    }
+
+    #replyForm {
+        width: 60%;
+        margin: 0 auto;
+    }
     
 </style>
-
 
 <jsp:include page="/WEB-INF/views/common/header.jsp">
    <jsp:param value="상세보기" name="title"/>
 </jsp:include>
 
 <br><br>
-
+<h2>게시판</h2>
 <div id="container">
    <table class="table">
       <tr>
          <th scope="col">제목</th>
-         <td scope="col"><input type="text" id="boardTitle" name="boardTitle" value="${board.boardTitle}" readonly></td>
-         
+         <td scope="col">
+            <input type="text" id="boardTitle" name="boardTitle" value="${board.boardTitle}" readonly>
+         </td>
       </tr>
       <tr>
          <th scope="col">작성자</th>
@@ -98,117 +111,126 @@
          <td scope="col">${board.boardCreate}</td>
       </tr>
    </table>
-   
-    <div class="button-group">
-     
-      <a href="${pageContext.request.contextPath}/board/delete?boardNo=${board.boardNo}" class="btn-delete">삭제</a>
-      <a href="${pageContext.request.contextPath}/board/update?boardNo=${board.boardNo}" class="btn-update">수정</a> 
-      <a href="${pageContext.request.contextPath}/board/boardList.bo?boardNo=${board.boardNo}" class="btn-update">뒤로가기</a> 
+
+   <div class="button-group">
+   	 <c:if test="${(loginMember.memId eq board.boardWriter) or (loginMember.memId eq 'admin')}">
+      	<a href="${pageContext.request.contextPath}/board/delete?boardNo=${board.boardNo}" class="btn-delete">삭제</a>
+      	<a href="${pageContext.request.contextPath}/board/update?boardNo=${board.boardNo}" class="btn-update">수정</a>
+      </c:if>
+      	<a href="javascript:window.history.back();" class="btn-update">뒤로가기</a>
    </div>
 </div>
 <br><br><br><br>
- <!-- 댓글 표시 부분      댓글 시작 !-->
-   <h3>댓글</h3>
-   <div id="replyList">
-      <c:forEach items="${replyList}" var="reply">
-	         <div class="reply">
-		            <div class="reply-header">
-		               <span class="replyWriter">${reply.replyWriter}</span>
-		               <span class="replyCreate">${reply.replyCreate}</span>
-		            </div>
-	            <div class="replyContent">${reply.replyContent}</div>
-	         </div>
-      </c:forEach>
-   </div>
-   
-   <!-- 댓글 등록 폼 -->
-   <h3>댓글 작성</h3>
-   <form id="replyForm">
-	      <div class="form-group">
-		         <label for="replyWriter">작성자</label>
-		         <input type="text" id="replyWriter" name="replyWriter" required>
-	      </div>
-	      <div class="form-group">
-		         <label for="replyContent">내용</label>
-		         <textarea id="replyContent" name="replyContent" rows="3" required></textarea>
-	      </div>
-	       <input type="hidden" name="boardNo" value="${board.boardNo}">  <!--  어려우니 복습-->
-      <button type="submit" class="btn btn-submit">댓글 등록</button>
-   </form>
 
- <!--  스크립트 시작 -->
+<!-- 이것도 마찬가지로 boardTag가 공지사항이 아닐경우(qna게시판)에만 reply가 가능하게 조건을 걸었음 -->
+<c:if test="${board.boardTag ne '공지사항'}">
+<h2>댓글</h2>  
+<form id="replyForm">
+   <div class="form-group">
+      <label for="replyWriter">작성자</label>
+      <input type="text" id="replyWriter" name="replyWriter" value="${loginMember.memId}" readonly>
+   </div>
+   <div class="form-group">
+      <label for="replyContent">내용</label>
+      <textarea id="replyContent" name="replyContent" rows="3" required></textarea>
+   </div>
+   <input type="hidden" name="boardNo" value="${board.boardNo}">
+   <button type="submit" class="btn btn-submit">댓글 등록</button>
+</form>
+
+<div id="replyList">
+   <div id="replyTemplate" >
+      <div class="reply">
+      <c:forEach var="reply" items="${replyList}">
+         <div class="reply-header">
+            <span class="replyWriter">${reply.replyWriter}</span>
+            <span class="replyCreate">${reply.replyCreate}</span>
+         </div>
+         <div class="replyContent">${reply.replyContent}</div>
+         
+         <c:if test="${(loginMember.memId eq reply.replyWriter) or (loginMember.memId eq 'admin')}">
+	         <div class="replyButtons">
+	            <button class="btn-update" onclick="updateReply(${reply.replyNo})">수정</button>
+	            <button class="btn-delete" onclick="deleteReply(${reply.replyNo})">삭제</button>
+	         </div>
+         </c:if>
+         <hr>
+      </c:forEach>
+      </div>
+   </div>
+</div>
+</c:if>
+
 <script>
-   // 댓글 등록 폼 제출 시 AJAX 요청 처리
-   document.querySelector("#replyForm").addEventListener('submit', (e) => {
-      e.preventDefault();
-      
-      const replyWriter = document.querySelector("#replyWriter").value;
-      const replyContent = document.querySelector("#replyContent").value;
-      
-      // AJAX 요청을 통해 댓글 등록 처리
+//댓글 등록 폼 submit 이벤트 처리
+document.querySelector("#replyForm").addEventListener('submit', (e) => {
+	e.preventDefault();
+	
+	const replyWriter = document.querySelector("#replyWriter").value;
+	const replyContent = document.querySelector("#replyContent").value;
+	const boardNo = document.querySelector("input[name='boardNo']").value;
+	
+	$.ajax({
+	   url: "${pageContext.request.contextPath}/reply/create",
+	   data: {
+	      replyWriter: replyWriter,
+	      replyContent: replyContent,
+	      boardNo: boardNo
+	   },
+	   success: function(result) {
+	      console.log(result);
+	      document.location.reload();
+	   },
+	   error: function() {
+	      console.log("댓글 등록및 목록조회 실패");
+	   }
+	});
+});
+   /* 댓글수정 */
+   function updateReply(replyNo) {
+      const updatedReplyContent = prompt("댓글 수정", replyContent);
+      if (updatedReplyContent === null) {
+         return;
+      }
+
       $.ajax({
-         url: "${pageContext.request.contextPath}/reply/create",
+         url: "${pageContext.request.contextPath}/reply/replyUpdate",
          method: "POST",
          data: {
-            replyWriter: replyWriter,  //앞에게 키 뒤에것이 밸류값
-            replyContent: replyContent,
-            boardNo: "${board.boardNo}" // 게시글 번호
+            replyNo: replyNo,
+            replyContent: updatedReplyContent
          },
-         success: function(response) {
-            // 등록 후 화면 갱신
-            if (response.success) {
-               selectReplyList(); // 댓글 목록 조회 함수 호출
-               document.querySelector("#replyWriter").value = ""; // 작성자 초기화
-               document.querySelector("#replyContent").value = ""; // 내용 초기화
-            } else {
-               console.log(response.message); // 등록 실패 시 오류 메시지 출력
-            }
+         success: function(result) {
+        	 console.log(result);
+        	 document.location.reload();
          },
-         error: function(xhr, status, error) {
-            console.log(error); // 오류 발생 시 콘솔에 출력
+         error: function() {
+            console.log("댓글 수정 실패");
          }
       });
-   });
-   
-   // 댓글 목록 조회 함수
-/*    function selectReplyList() {
-      $.ajax({
-         url: "${pageContext.request.contextPath}/reply/list",
-         method: "GET",
-         data: {
-            boardNo: "${board.boardNo}" // 게시글 번호
-         },
-         success: function(response) {
-            // 댓글 목록을 표시하는 코드 작성
-            let replyList = response.replyList;
-            let replyHtml = '';
-            for (let i = 0; i < replyList.length; i++) {
-               let reply = replyList[i];
-               replyHtml += `
-                  <div class="reply">
-                     <div class="reply-header">
-                        <span class="reply-writer">${reply.replyWriter}</span>
-                        <span class="reply-date">${reply.replyCreate}</span>
-                     </div>
-                     <div class="reply-content">${reply.replyContent}</div>
-                  </div>
-               `;
-            }
-            document.querySelector("#replyList").innerHTML = replyHtml;
-         },
-         error: function(xhr, status, error) {
-            console.log(error); // 오류 발생 시 콘솔에 출력
-         }
-      }); 
-   }*/
-   
-   // 페이지 로드 시 댓글 목록 조회
-/*    selectReplyList(); */
+   } 
 
+// 댓글 삭제 함수
+   function deleteReply(replyNo) {
+       const confirmDelete = confirm("댓글을 삭제하시겠습니까?");
+       if (!confirmDelete) {
+           return;
+       }
 
+       $.ajax({
+           url: "${pageContext.request.contextPath}/reply/replyDelete",
+           method: "POST",
+           data: {
+               replyNo: replyNo
+           },
+           success: function(result) {
+           		document.location.reload();
+           },
+           error: function() {
+           		console.log("댓글 삭제 실패");
+           }
+       });
+   }
 </script>
-
-
-
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

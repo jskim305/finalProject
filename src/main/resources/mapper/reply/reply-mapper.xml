@@ -4,7 +4,7 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="com.kh.finalProject.reply.model.dao.ReplyDao">
-
+<resultMap type="com.kh.finalProject.reply.model.vo.Reply" id="replyMap" />
 
 	<insert id="createReply">
 	   INSERT INTO reply
@@ -16,5 +16,27 @@
 		       default
 			)
 	</insert>
+
+ 	<select id="selectReplyList" resultMap="replyMap">
+        SELECT * FROM reply
+        WHERE board_no = #{boardNo}
+        ORDER BY reply_no DESC
+    </select>
+
+    <update id="updateOneReply">
+        UPDATE reply
+        SET reply_content = #{replyContent}
+        WHERE reply_no = #{replyNo}
+    </update>
+
+    <delete id="deleteOneReply">
+        DELETE FROM reply
+        WHERE reply_no = #{replyNo}
+        
+    </delete>
+    
+    
+
+
 
 </mapper>

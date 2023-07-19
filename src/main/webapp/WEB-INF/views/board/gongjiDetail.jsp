@@ -4,20 +4,11 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f2f2f2;
-         width: 100%;
-      margin: 0 auto;
-    }
+   
 
     #container {
-        width: 500px;
-        margin: 0 auto;
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+       width: 900px;
+		margin: auto;
     }
 
     h2 {
@@ -63,11 +54,12 @@
         margin-left: 10px;
     }
      textarea {
-    width: 100%;
-    height: 150px;
-    height: 6.25em;
-    border : none;
-    resize: none;
+     height: 150px;
+    min-width: 800px;
+    min-height: 300px;
+    max-width: 500px;
+    max-height: 500px;
+    overflow: auto;
    
 }
 

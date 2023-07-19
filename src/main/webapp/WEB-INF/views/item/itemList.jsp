@@ -39,7 +39,7 @@
                 <div class="card">
                     <img src="${pageContext.request.contextPath}/resources/images/itemlogo/${item.itemLogo}" alt="logo">
                     <span class="itemName">${item.itemName}</span>
-                    <p>${item.itemLocal}</p>
+                    <p>생산지 : ${item.itemLocal}</p>
                     <p><fmt:formatNumber value="${item.itemPrice}" pattern="#,###"/>원</p>
                 </div>
             </a>
@@ -85,7 +85,7 @@
                                     	    <form name="cart">
            										<input  type="hidden" name="memId" value="${loginMember.memId}">					
 												<input id="itemNo" type="hidden" name="itemNo" value="">			
-									            <input type="number" name="cartCount" min="1" max="" value="1" onchange="updateTotalPrice(this)">
+									            <input type="number" class="cartCount" name="cartCount" min="1" max="" value="1" onchange="updateTotalPrice(this)">
 											</form>
                                          </div>
                                     </div>
@@ -106,7 +106,6 @@
                                         <input type="hidden" name="itemNo" value="${item.itemNo}">
                                         <button class="remove-button" type="submit">삭제하기</button>
                                     </form>    
-                                    <button class="Update-button" onclick="Updata(${item.itemNo})">수정하기</button>
                                 </c:if>
                             </div>
                         </main>

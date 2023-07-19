@@ -12,7 +12,7 @@
     }
 
     #container {
-        width: 500px;
+        width: 800px;
         margin: 0 auto;
         background-color: #fff;
         padding: 20px;
@@ -37,7 +37,14 @@
 
     .form-group input[type="text"],
     .form-group textarea {
-        width: 100%;
+        width: 10%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    .form-group1{
+   
+      width: 95%;
         padding: 10px;
         border: 1px solid #ccc;
         border-radius: 5px;
@@ -49,6 +56,7 @@
     }
 
     .btn {
+        margin-top: 10px;
         padding: 10px 20px;
         font-size: 14px;
         background-color: #4caf50;
@@ -64,18 +72,66 @@
     }
 
     textarea {
-        width: 100%;
-        height: 150px;
-        height: 6.25em;
-        border: none;
-        resize: none;
-    }
-
-    #replyForm {
-        width: 60%;
-        margin: 0 auto;
+    min-width: 700px;
+    min-height: 150px;
+    max-width: 500px;
+    max-height: 500px;
+    overflow: auto;
+           
     }
     
+
+    #replyForm {
+     width: 800px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+   
+    #replyList{
+    width: 800px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    span{
+    display: inline-block; text-align: right;
+    }
+    
+    .replyWriter {
+    width: 50%;
+    text-align: left;
+    font-weight: bold;
+}
+.replyCreate {
+    width: 49%;
+}
+.replyButtons {
+    text-align: right;
+    width: 99%;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-top: -15px;
+}
+
+.replyContent {
+    width: 50%;
+    display: inline-block;
+}
+input#replyContent {
+    height: 50;
+    border: 0;
+}
+
+.reply-header {
+    margin-top: 20px;
+}
 </style>
 
 <jsp:include page="/WEB-INF/views/common/header.jsp">
@@ -113,14 +169,23 @@
    </table>
 
    <div class="button-group">
-   	 <c:if test="${(loginMember.memId eq board.boardWriter) or (loginMember.memId eq 'admin')}">
-      	<a href="${pageContext.request.contextPath}/board/delete?boardNo=${board.boardNo}" class="btn-delete">삭제</a>
-      	<a href="${pageContext.request.contextPath}/board/update?boardNo=${board.boardNo}" class="btn-update">수정</a>
-      </c:if>
-      	<a href="javascript:window.history.back();" class="btn-update">뒤로가기</a>
+   <c:choose>
+   		<c:when test="${board.boardTag eq '공지사항'}">
+   			<c:if test="${loginMember.memId eq 'admin'}">
+   				<a href="${pageContext.request.contextPath}/board/delete?boardNo=${board.boardNo}&boardTag=${board.boardTag}" class="btn-delete">[삭제]</a>
+      			<a href="${pageContext.request.contextPath}/board/update?boardNo=${board.boardNo}" class="btn-update">[수정]</a>
+   			</c:if>
+   		</c:when>
+   		<c:otherwise><!-- qna게시판일 경우 -->
+   			<c:if test="${(loginMember.memId eq board.boardWriter) or (loginMember.memId eq 'admin')}">
+		      	<a href="${pageContext.request.contextPath}/board/delete?boardNo=${board.boardNo}&boardTag=${board.boardTag}" class="btn-delete">[삭제]</a>
+		      	<a href="${pageContext.request.contextPath}/board/update?boardNo=${board.boardNo}" class="btn-update">[수정]</a>
+			</c:if>
+   		</c:otherwise>
+   </c:choose>
+      	<a href="javascript:window.history.back();" class="btn-update">[뒤로가기]</a>
    </div>
 </div>
-<br><br><br><br>
 
 <!-- 이것도 마찬가지로 boardTag가 공지사항이 아닐경우(qna게시판)에만 reply가 가능하게 조건을 걸었음 -->
 <c:if test="${board.boardTag ne '공지사항'}">
@@ -130,12 +195,12 @@
       <label for="replyWriter">작성자</label>
       <input type="text" id="replyWriter" name="replyWriter" value="${loginMember.memId}" readonly>
    </div>
-   <div class="form-group">
+   <div class="form-group1">
       <label for="replyContent">내용</label>
-      <textarea id="replyContent" name="replyContent" rows="3" required></textarea>
+      <input style="width: 750px; " id="replyContent" name="replyContent"  required></input>
+   <button type="submit" class="btn btn-submit">댓글 등록</button>
    </div>
    <input type="hidden" name="boardNo" value="${board.boardNo}">
-   <button type="submit" class="btn btn-submit">댓글 등록</button>
 </form>
 
 <div id="replyList">
@@ -154,13 +219,12 @@
 	            <button class="btn-delete" onclick="deleteReply(${reply.replyNo})">삭제</button>
 	         </div>
          </c:if>
-         <hr>
       </c:forEach>
       </div>
    </div>
 </div>
 </c:if>
-
+<br><br><br>
 <script>
 //댓글 등록 폼 submit 이벤트 처리
 document.querySelector("#replyForm").addEventListener('submit', (e) => {

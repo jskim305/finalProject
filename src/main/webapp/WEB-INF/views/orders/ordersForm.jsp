@@ -60,8 +60,8 @@
           </table>
 			<br><br>
 			
-		<%-- <form action="${pageContext.request.contextPath}/orders/ordersPayment.or" method="post"> --%>
-		<form>
+		<form action="${pageContext.request.contextPath}/orders/ordersPayment.or" method="post">
+		<!-- <form> -->
           <h4>받는사람정보&emsp;<input type="button"  id="addrEditBtn" value="정보 변경"></h4>
           <table class="orders-table1">
 				<tr>
@@ -145,22 +145,10 @@
 			<input type="hidden" id="ordersCount" name="ordersCount" value="${ordersCount}">
 			<input type="hidden" id="ordersPrice" name="ordersPrice" value="${ordersPrice}">
 
-          <table width="900" border="1">
-			<tr>
-				<td width="20%"> 
-					<h4>결제 방법</h4>
-				</td>
-				
-	            <td width="80%">
-            	  <input type="radio" id="paymentMethod" name="paymentMethod" value="dwob" checked>
-            	  <label for="paymentMethod">카카오페이</label>
-	            </td>
-			</tr>
-		  </table>
-          <br><hr class="mb-4">
           
-          <button class="sanda-button" id="iamport">결제하기</button>
-          
+          <hr class="mb-4">
+
+          <button class="sanda-button" type="submit">결제하기</button>
 		</form>
 
       </div>
@@ -170,48 +158,6 @@
 
 
 <script>
-	document.querySelector("#addrEditBtn").addEventListener('click', (e) => {
-		var price = document.getElementById('ordersPrice').value;
-		console.log(price);
-	    //가맹점 식별코드
-	    IMP.init('imp13608827');
-	    IMP.request_pay({
-	       pg : 'kakaopay',
-	       pay_method : 'card', //생략 가능
-	       merchant_uid: "order_no_0001" + new Date().getTime(),
-	        //merchant_uid: "order_no_0001", // 상점에서 관리하는 주문 번호
-	        //merchant_uid : 'merchant_' + new Date().getTime(),
-	        name : 'vegFarm', //결제창에서 보여질 이름
-	        amount : 100, //실제 결제되는 가격
-	        buyer_email : 'iamport@siot.do',
-	        buyer_name : '구매자이름',
-	        buyer_tel : '010-1234-5678',
-	        buyer_addr : '서울 강남구 도곡동',
-	        buyer_postcode : '123-456'
-	    }, function(rsp) {  // callback 로직
-	       console.log(rsp);
-	        if ( rsp.success ) {
-	           var msg = '결제가 완료되었습니다.';
-	            msg += '고유ID : ' + rsp.imp_uid;
-	            msg += '상점 거래ID : ' + rsp.merchant_uid;
-	            msg += '결제 금액 : ' + rsp.paid_amount;
-	            msg += '카드 승인번호 : ' + rsp.apply_num;
-/* 	            
-	            $.ajax({
-	            	url : "${pageContext.request.contextPath}/orders/ordersPaymemt.or";
-	            	method: "post";
-	            	data : {}
-	            });
- */	            
-	            
-	        } else {
-	            var msg = '결제에 실패하였습니다.';
-	             msg += '에러내용 : ' + rsp.error_msg;
-	        }
-	        alert(msg);
-	    }
-	});
-
 	document.querySelector("#addrEditBtn").addEventListener('click', (e) => {
 		$('#ordersName').prop('readonly', false);
 		$('#ordersName').prop('required', true);

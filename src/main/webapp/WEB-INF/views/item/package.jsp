@@ -81,8 +81,7 @@
 					<form action="${pageContext.request.contextPath}/item/deleteItem.bo" method="post">
 						<input type="hidden" name="itemNo" value="${pacItem.itemNo}">
 						<button class="remove-button" type="submit">삭제하기</button>
-					</form>    
-					<button class="UPdate-button" onclick="Updata(${pacItem.itemNo})">수정하기</button>
+					</form>   
 		   		</c:if>
 			</div>
 			<div class="info-area_content">
@@ -112,9 +111,5 @@
 	    const formattedTotalPrice = totalPrice.toLocaleString();
         totalPriceElement.textContent = formattedTotalPrice + '원';
     }
-    
-	function Updata(no) {
-		location.href='${pageContext.request.contextPath}/item/updateitemv.do?no='+no;	
-	}
 </script>
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

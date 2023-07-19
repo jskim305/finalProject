@@ -14,7 +14,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class Orders {
-	private String ordersNo;
+	private int ordersNo;
 	private String memId;
 	//총 결제금액
 	private int ordersPrice;

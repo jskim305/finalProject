@@ -38,7 +38,7 @@ public class ReservationController {
 	public String reserInsert(Reservation reservation, RedirectAttributes redirectAttr ) {
 		int result = reservationService.insertReservation(reservation);
 		redirectAttr.addFlashAttribute("msg","수정완료");
-		return "/reservation/resermoney";
+		return "/farm/indexFarm";
 	}
 	
 // -------------관리자페이지---------------

@@ -112,9 +112,14 @@ public class BoardController {
 	}
 
 	@GetMapping("/delete")
-	public String deleteBoard(@RequestParam int boardNo) {
+	public String deleteBoard(@RequestParam int boardNo, @RequestParam String boardTag) {
+		String tag = boardTag;
+		
 		// 게시글 삭제 처리
 		boardService.deleteOneBoard(boardNo);
+		
+		if(tag.equals("공지사항"))
+			return "redirect:/board/gongjiList.bo";
 		// 삭제 후, 어떤 페이지로 이동할지 리다이렉트 경로를 반환
 		return "redirect:/board/boardList.bo";
 	}

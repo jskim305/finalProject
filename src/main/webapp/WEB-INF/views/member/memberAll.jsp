@@ -80,7 +80,6 @@
 			$('#mTel').attr('style', "border:1px solid;");
 			$('#mEmail').attr('style', "border:1px solid;");
 			$('#mAddr').attr('style', "border:1px solid;");
-			/* $("#btnCheck").val("editCheck"); */
 			
 			document.querySelector(".form-row2").style.display = "none";
 			document.querySelector(".form-row3").style.display = "inline";

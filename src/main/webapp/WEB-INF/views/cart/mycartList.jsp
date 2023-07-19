@@ -26,7 +26,7 @@
 		<div class="cart-table-box">		
 			<table class="cart-table">
 				<tr>
-					<td colspan="5" class="no-padding"  height="40px"><span id="selectAllBtn" onclick="toggleSelectAll()">전체 선택</span></td>
+					<td colspan="5" class="no-padding" style="height:40px; width:700px;"><span id="selectAllBtn" onclick="toggleSelectAll()">전체 선택</span></td>
 				</tr>
 				<tr>
 					<td colspan="5">
@@ -37,7 +37,7 @@
 				<c:choose>
 					<c:when test="${empty cartItemList}">
 						<tr>
-							<td colspan="5" height="40px">장바구니가 비어있습니다.</td>
+							<td colspan="5" style="height:40px;">장바구니가 비어있습니다.</td>
 						</tr>
 					</c:when>
 					<c:otherwise>

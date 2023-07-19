@@ -15,6 +15,8 @@ public interface OrderDetailDao {
 	int adminOrderDelete(String detailNo);// 주문삭제
 
 	int adminOrderUpdate(OrderDetail orderDetail);
+
+	int orderDetailInsert(OrderDetail orderDetail);
 	
 //관리자 end----------------
 

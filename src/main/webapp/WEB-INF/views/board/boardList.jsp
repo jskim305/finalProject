@@ -3,8 +3,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <style>
+	
 	#container {
-		width: 1000px;
+		width: 900px;
 		margin: auto;
 	}
 
@@ -112,6 +113,17 @@
 	.table td {
 		border-bottom: 1px solid #ccc; /* 가로 선 유지 */
 	}
+	
+	button#enrollBtn {
+	    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 14px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+	}
 </style>
 
 <jsp:include page="/WEB-INF/views/common/header.jsp">
@@ -144,6 +156,7 @@
 				<button type="button" class="btn btn-outline-secondary" id="enrollBtn">글쓰기</button> <!-- 버튼을 오른쪽 아래에 넣을 부분 -->
 			</td>
 	  </div>
+	  <br><br><br><br>
 			<nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">
         <c:if test="${pi.nowPage ne 1}">
@@ -164,16 +177,15 @@
     </ul>
 </nav>
 </div>
-<br><br><br><br><br>
+<pre>
 
 
 
+
+</pre>
 <script>
 	document.querySelector("#enrollBtn").addEventListener('click', (e) => {
 		location.href='${pageContext.request.contextPath}/board/boardForm.bo?tag=문의'; <!-- 버튼을 클릭했을 때 글쓰기 페이지로 이동 -->
 	});
 </script>
-
-
-
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

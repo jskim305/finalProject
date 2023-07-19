@@ -41,38 +41,41 @@
 			</div>
 			<div class="info-area">
 				<div class="info-area_name">
-					<h2>${pacItem.itemName}</h2>
+					<span>${pacItem.itemName}</span>
 				</div>
 				<div class="info-area_price">
-				<h2><fmt:formatNumber value="${pacItem.itemPrice}" pattern="#,###"/>원</h2>
-					
+					<span><fmt:formatNumber value="${pacItem.itemPrice}" pattern="#,###"/></span><span class="won">원</span>
+				</div>
+				<div class="info-area_itemCount">
+					<span class="won">총 수량</span> <span>${pacItem.itemCount}</span>
 				</div>
 				<div class="info-area_farmBox">
 					<div class="info-area_title">
-						<span>판매 농가</span>
+						<span>생산 농가</span>
 					</div>
 					<div class="info-area_farm">
-						<p>${pacItem.itemLocal}</p>
+						<span>${pacItem.itemLocal}</span>
 					</div>
 				</div>
 					<div class="item-sulyangBox">
 						<div class="info-area_title">
 							<span>수량</span>
 						</div>
-						<form name="frm">
-							<div class="info-area_number">
+						<div class="info-area_number">
+							<form name="frm">
 								<input type="hidden" name="memId" value="${loginMember.memId}">					
 								<input type="hidden" name="itemNo" value="${pacItem.itemNo}">							
-								<input type="number" name="cartCount" min="0" max="${pacItem.itemLocal}" value="1" onchange="updateTotalPrice(this)">
-							</div>
-						</form>
+								<input type="number" class="cartCount"  name="cartCount" min="0" max="${pacItem.itemLocal}" value="1" onchange="updateTotalPrice(this)">
+							</form>	
+						</div>
 					</div>
 					<div class="info-area_priceBox">
 						<div class="info-area_title">
-							<span>총 금액</span>
+							<span>총 상품 금액</span>
 						</div>
-						<span class="total_price"><fmt:formatNumber value="${pacItem.itemPrice}" pattern="#,###"/>원</span>
-					</div>
+						<div class="total_price">
+							<span id="total_price"><fmt:formatNumber value="${pacItem.itemPrice}" pattern="#,###"/></span><span>원</span>
+						</div>
 					<div class="info-area_btn">
 						<button id="info-area_btn" onclick="insertCart()">장바구니</button>
 					</div>
@@ -84,7 +87,7 @@
 					</form>   
 		   		</c:if>
 			</div>
-			<div class="info-area_content">
+		<div class="info-area_content">
 				<img src="${pageContext.request.contextPath}/resources/images/${pacItem.itemContent}" alt="logo">
 			</div>
 		</main>
@@ -112,4 +115,3 @@
         totalPriceElement.textContent = formattedTotalPrice + '원';
     }
 </script>
-<jsp:include page="/WEB-INF/views/common/footer.jsp" />

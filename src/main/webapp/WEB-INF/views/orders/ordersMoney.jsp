@@ -126,10 +126,7 @@
 		  
 		  <input type="hidden" id="ordersPrice" value="${orders.getOrdersPrice()}" >
 		  <input type="hidden" id="memId" value="${orders.getMemId()}" >
-		  
-		  <div class="btn-area">
-			<button type="submit" class="btn-reservation" onclick="iamport();">결제하기</button>
-		  </div>
+
 		</div>	
 	</div>
 

@@ -6,7 +6,12 @@
 
 <!DOCTYPE html>
 <html>
+<img class="logo"
+	src="${pageContext.request.contextPath}/resources/images/v22_2.png"
+	alt="logo"
+	onclick="location.href='${pageContext.request.contextPath}/index.jsp'">
 <head>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 <script type="text/javascript"
@@ -20,10 +25,12 @@
 </head>
 
 
-<h1 style="text-align: center;">[2023]예약현황</h1>
+
+
+<body>
+
 <h3 style="text-align: center; color: white;">ID :
 	${loginMember.memId} 님의 예약</h3>
-<body>
 
 
 
@@ -122,7 +129,6 @@ window.onclick = function(event) {
          </script>
 
 
-
 	</div>
 	<div id="controller">
 		<table>
@@ -133,8 +139,11 @@ window.onclick = function(event) {
 				<td>※ 선택불가시 예약이 만료된 구역입니다.</td>
 			</tr>
 		</table>
+		<h1 style="text-align: center;">[2023]예약현황</h1>
+		
 		<hr>
 		<!-- 김씨네농장  -->
+		
 		<div id="A">
 			<form action="${pageContext.request.contextPath}/sector/radioRez.my"
 				method="post" onsubmit="return check()">
@@ -203,8 +212,6 @@ window.onclick = function(event) {
 			</form>
 		</div>
 	</div>
-
-
 
 
 
@@ -536,6 +543,10 @@ window.onclick = function(event) {
 
 </body>
 <style>
+.logo {
+	margin: auto;
+	display: block;
+}
 .modal {
 	display: none; /* 모달 초기 상태는 숨김으로 설정합니다. */
 	position: fixed;
@@ -684,10 +695,11 @@ th, td {
 
 .f { /*농장이름포커스*/
 	cursor: pointer;
+	color : white;
 }
 
 .fn {
-	color: white;
+	color: green;
 	font-size: 15px;
 }
 

@@ -196,6 +196,7 @@ button:hover {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-wrap: wrap;
 }
 
 #pacSelect-img{
@@ -211,6 +212,7 @@ button:hover {
 	margin: 5%;
     border-radius: 20px 20px 20px 20px;
 }
+
 .info-area {
 	width: 450px;
 	height: 450px;
@@ -218,50 +220,99 @@ button:hover {
 	justify-content: center;
 	align-items: flex-start;
 }
+.info-area * {
+    font-weight: bold;
+}
+.info-area_name {
+	font-size: 30px;
+	font-weight: bold;
+    margin: 15px;
+}
+/* 상품 가격 상자 ---------------------------*/
 
-.info-area_name{
-	padding: 20px 0;
-    border-bottom: 1px solid #ccc;
+
+.won{
+	font-size: 15px;
 }
-.info-area_price {
-	padding: 20px 0;
-    border-bottom: 1px solid #ccc;
-}
+
+/* 재고 수량 상자 ----------------------------*/
 .info-area_title {
-	width: 100px;
+	width: 49%;
 	display: inline-block;
-	text-align: center;
+	text-align: left;
 }
+
+input.cartCount {
+    font-size: 30px;
+    border: 0;
+    width: 40px;
+}
+/* 재고 수량 상자 ----------------------------*/
+.info-area_itemCount {
+    text-align: right;
+    width: 40%;
+    margin-left: 15px;
+    display: inline-block;
+}
+/* 생산지 상자 ------------------------------*/
 .info-area_farmBox {
-	padding: 20px 0;
-    border-bottom: 1px solid #ccc;	
+    width: 97%;
+    display: inline-block;
+    padding: 5px 10px 20px 10px;
+    text-align: right;
+    border-bottom: 1px solid #ccc;
 }
 .info-area_farm {
-	width:250px;
+	text-align:right;
+	width:49%;
 	display: inline-block;
 }
-.info-area_farmBox {
-	padding: 20px 0;
-    border-bottom: 1px solid #ccc;	
+.info-area_farm>span {
+	font-size: 20px;
+    color: #b8b8b8;
+    margin-top: 5px;
 }
+/* 수량 상자-------------------------------- */
+
 .item-sulyangBox {
-	padding: 20px 0;
-    border-bottom: 1px solid #ccc;	
-}
-.item-sulyangBox>form {
-	width: 50px;
+	margin-top:20px;
+	width: 100%;
 	display: inline-block;
-	}
+	padding: 5px 10px;
+	text-align: right;
+}
+.info-area_number {
+	text-align:right;
+	width:49%;
+	display: inline-block;
+}	
+/* 상품금액 상자 -----------------------------*/
+.info-area_price {
+    font-size: 29px;
+    width: 48%;
+    display: inline-block;
+    text-align: left;
+    margin: 15px;
+}
+
+.total_price {
+	text-align:right;
+	width:49%;
+	display: inline-block;
+}
+
+#total_price {
+	font-size: 30px;
+	padding-right: 5px;
+}
+
+
 .info-area_total {
 	padding: 20px 0;
     border-bottom: 1px solid #ccc;
 	display: inline-block;
 	width: 80%;
 }
-.info-area_number{
-	display: inline-block;	
-	width: 250px;
-}	
 
 .info-area_number>input{
 	width: 50px;
@@ -270,32 +321,26 @@ button:hover {
 }	
 
 /* 상품금액 상자 -----------------------------*/
-.info-area_priceBox{
-	height: 40px;
-	width:95%;
-    display: inline-block;
-    margin: auto;
-    padding: 20px;
-    text-align: right; 
-}
-.info-area_priceBox>span{
-	width: 100px;	
- 	border: 0;
- 	font-size: 30px;
-}
 /* 장바구니 버튼---------------------------- */
+.info-area_priceBox{
+	padding-left:15px;
+}
+
 .info-area_btn {
+	margin-top: 30px;
 	display: block;
 	text-align: center;
 	width: 100%;
+	margin-bottom: 0;
 }
+
 #info-area_btn {
-	width : 100%;
-	height : 70px;
-    background: #918c00;
-    border: 1px solid #918c00;
-    color: #FFF;
-    font-size: 20px;
+	width: 100%;
+	height: 70px;
+	background: #918c00;
+	border: 1px solid #918c00;
+	color: #FFF;
+	font-size: 20px;
 }
 .info-area_content {
 	display: block;

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -58,6 +59,8 @@ public class ItemController {
 		model.addAttribute("item", item);
 		return "/item/item";
 	}
+	
+	
 	//카테고리 값 자동입력 테스트
 	@RequestMapping("/findItems.bo")
     public String findItems(@RequestParam("category") String category, Model model) {
@@ -73,23 +76,41 @@ public class ItemController {
 	    return "/item/itemForm";
 	}
 	
-	@PostMapping("/insertItem.bo")
-	public String insertItem(String ItemType,Item item, RedirectAttributes redirectAttr) {
-		System.out.println(ItemType);
-		System.out.println(item);
-		System.out.println(redirectAttr);
-		if(ItemType.equals("item")) {
-			int result = itemService.insertItem(item);
-		}if(ItemType.equals("package")) {
-			int result = itemService.insertPac(item);
-		}
-		redirectAttr.addFlashAttribute("msg", "정상적으로 저장했습니다.");
-		return "redirect:/item/itemlist.bo";
-	}
+    @PostMapping("/insertItem.bo")
+    public String insertItem(@RequestParam String ItemType, @ModelAttribute("item") Item item,
+            RedirectAttributes redirectAttr) {
+        System.out.println("ItemType: " + ItemType);
+        System.out.println("item: " + item);
+        System.out.println("redirectAttr: " + redirectAttr);
+
+        if (ItemType.equals("item")) {
+            int result = itemService.insertItem(item);
+            if (result > 0) {
+                redirectAttr.addFlashAttribute("msg", "정상적으로 저장했습니다.");
+            } else {
+                redirectAttr.addFlashAttribute("msg", "상품 등록에 실패했습니다.");
+            }
+        } else if (ItemType.equals("package")) {
+            int result = itemService.insertPac(item);
+            if (result > 0) {
+                redirectAttr.addFlashAttribute("msg", "정상적으로 저장했습니다.");
+            } else {
+                redirectAttr.addFlashAttribute("msg", "패키지 등록에 실패했습니다.");
+            }
+        }
+
+        return "redirect:/item/itemlist.bo";
+    }
 
 	
+    @PostMapping("/deletepac.bo")
+    public String deletepac(@RequestParam int itemNo, RedirectAttributes redirectAttr) {
+    	itemService.deleteItem(itemNo);
+    	redirectAttr.addFlashAttribute("msg", "정상적으로 삭제했습니다.");
+    	return "redirect:/item//paclist.bo";
+    }
 	@PostMapping("/deleteItem.bo")
-	public String deleteItem(int itemNo, RedirectAttributes redirectAttr) {
+	public String deleteItem(@RequestParam int itemNo, RedirectAttributes redirectAttr) {
 	    itemService.deleteItem(itemNo);
 	    redirectAttr.addFlashAttribute("msg", "정상적으로 삭제했습니다.");
 	    return "redirect:/item/itemlist.bo";

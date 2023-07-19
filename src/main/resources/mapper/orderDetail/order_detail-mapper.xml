@@ -33,7 +33,20 @@
 
 <!--관리자 mapper end-->	
 
-
+<insert id="orderDetailInsert">
+	INSERT INTO ORDER_DETAIL
+		VALUES(
+			SEQ_ORDETAIL.NEXTVAL,
+			#{ordersNo},
+			#{itemNo},
+			#{detailPrice},
+			#{detailCount},
+			#{itemName},
+			'배송준비중',
+			#{memId},
+			#{memName}
+		)
+</insert>
 
 
 

@@ -17,5 +17,10 @@ public class OrdersServiceImpl implements OrdersService {
 		return ordersDao.insertOrders(orders);
 	}
 
+	@Override
+	public int currSeq(Orders orders) {
+		return ordersDao.currSeq(orders);
+	}
+
 
 }

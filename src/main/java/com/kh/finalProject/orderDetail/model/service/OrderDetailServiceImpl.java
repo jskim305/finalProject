@@ -27,6 +27,10 @@ public class OrderDetailServiceImpl implements OrderDetailService{
 	public int adminOrderUpdate(OrderDetail orderDetail) {
 		return orderDetailDao.adminOrderUpdate(orderDetail);
 	}
+	@Override
+	public int orderDetailInsert(OrderDetail orderDetail) {
+		return orderDetailDao.orderDetailInsert(orderDetail);
+	}
 
 	
 	

@@ -42,12 +42,12 @@
 	           		<a href="${pageContext.request.contextPath}/member/memberEnroll.me"> 회원가입</a>
              	</c:if>
              	
-             	<c:if test="${not empty loginMember && loginMember.admin eq 0}">
-           			<a href="#">내역확인</a>
-           		</c:if>
+<%--              	<c:if test="${not empty loginMember && loginMember.admin eq 0}">
+           			<a href="${pageContext.request.contextPath}/orderDetail/ordersDetailForm.od">내역확인</a>
+           		</c:if> --%>
            		
            		<c:if test="${not empty loginMember && loginMember.admin eq 0}">
-           			<a>|</a>
+           	<!-- 		<a>|</a> -->
 	           		<a href="${pageContext.request.contextPath}/member/checkPwd.me"> 마이페이지</a>
              	</c:if>
              	

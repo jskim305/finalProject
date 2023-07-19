@@ -6,5 +6,7 @@ public interface OrdersService {
 
 	int insertOrders(Orders orders);
 
+	int currSeq(Orders orders);
+
 
 }

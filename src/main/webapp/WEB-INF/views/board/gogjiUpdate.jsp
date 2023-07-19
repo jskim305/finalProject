@@ -12,7 +12,7 @@
     }
 
     #container {
-        width: 500px;
+        width: 700px;
         margin: auto;
         background-color: #fff;
         padding: 20px;

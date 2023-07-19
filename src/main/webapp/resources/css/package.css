@@ -44,6 +44,10 @@ button:hover {
 	background-color: white;
 	box-shadow:1px 1px 1px 1px;
 }
+.package-card:hover a{
+	font-weight: bord;
+	}
+	
 .package-card>img {
 	width: 250px;
 	height: 250px;

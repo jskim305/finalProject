@@ -67,8 +67,8 @@
 						  
 					  </select>
 					      <div class="btn-area">
-							  <button type="submit" class="btn-reservation">예약하기</button>
-							  <button type="reset" class="btn-reset" onclick="location.href='${pageContext.request.contextPath}/reservation/reserMoney.go'">취소</button>
+							  <button type="submit" id="submitBtn" class="btn-reservation" disabled>예약하기</button>
+							  <button type="reset" class="btn-reset" >취소</button>
 						  </div>
 				      </form>   
 				   </li>   	
@@ -151,9 +151,20 @@
 			.swiper img {max-width: 100%}
 			.map-contents {width: 100%; height: 400px}
 			.iwStyle {padding:5px;}
+			
+			.reservation-info .btn-area .btn-reservation[disabled] {
+   				 background-color: #ccc;
+			}
 		</style>
 
 <script type="text/javascript">
+
+	//area 클릭 시 버튼 상태 변경
+	$(document).ready(function() {
+	  $("area").click(function() {
+	    $("#submitBtn").prop("disabled", false);
+	  });	
+	});
 
 	$(document).ready(function () {
 	 // 농장별jsp를 클릭마다 해당 클릭된 농장별jsp를 include하여 불러오기

@@ -11,6 +11,8 @@ public interface OrderDetailService {
 	void adminOrderDelete(String detailNo); //관리자주문삭제
 
 	int adminOrderUpdate(OrderDetail orderDetail);
+
+	int orderDetailInsert(OrderDetail orderDetail);
 	
 
 }

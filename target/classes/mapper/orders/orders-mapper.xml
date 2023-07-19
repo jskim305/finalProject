@@ -20,7 +20,21 @@
 				#{ordersReq},
 				#{ordersCount}
 			)
+			
+<!-- 		<selectKey keyProperty="ordersNo" resultType="int" order="AFTER">
+			select seq_orders.currval from dual
+		</selectKey> -->
 	</insert>
+
+	<select id="currSeq" resultType="int">
+		select orders_no
+		  from orders
+		 where mem_id = #{memId}
+		   and orders_price = #{ordersPrice}
+		   and orders_name = #{ordersName}
+		   and orders_req = #{ordersReq}
+		   and orders_count = #{ordersCount}
+	</select>
 
 
 </mapper>

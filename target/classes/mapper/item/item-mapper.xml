@@ -40,11 +40,11 @@
     ORDER BY ITEM_NO DESC
     </select>
     
-	<insert id="insertItem">
+	<insert id="insertPac">
 	insert into
 	  item
 	values (
-		sql_item_no.nextval,
+		SQL_ITEM.nextval,
 		#{itemSector},
 		#{itemName},
 		#{itemPrice},
@@ -56,11 +56,11 @@
 	)
 	</insert>
 
-	<insert id="insertPac">
+	<insert id="insertItem">
 	insert into
 	  item
 	values (
-		sql_item_no.nextval,
+		SQL_ITEM.nextval,
 		#{itemSector},
 		#{itemName},
 		#{itemPrice},

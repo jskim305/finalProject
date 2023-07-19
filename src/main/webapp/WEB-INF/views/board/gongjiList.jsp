@@ -4,7 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <style>
 	#container {
-		width: 1000px;
+		width: 900px;
 		margin: auto;
 	}
 	table {
@@ -105,6 +105,17 @@
 	.table td {
 		border-bottom: 1px solid #ccc; /* 가로 선 유지 */
 	}
+	
+	button#enrollBtn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 14px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+	}
 </style>
 
 <jsp:include page="/WEB-INF/views/common/header.jsp">
@@ -133,9 +144,11 @@
 		</c:forEach>	
 	</table>
 	  <div id="gul"> <!--오른쪽 아래 글쓰기 버튼임  -->
+	  	<c:if test="${loginMember.memId eq 'admin'}">
 			<td colspan="6" align="right">
 				<button type="button" class="btn btn-outline-secondary" id="enrollBtn">글쓰기</button> <!-- 버튼을 오른쪽 아래에 넣을 부분 -->
 			</td>
+		</c:if>
 	  </div>
 	
 	<br><br><br><br>
@@ -162,13 +175,18 @@
 			</c:forEach>
 			<c:if test="${ pi.nowPage ne pi.totalPage }">
 				<li class="page-item">
-					<a class="page-link" href="${pageContext.request.contextPath}/board/gongjiList.bo?nowPage=${pi.nowPage+1}">Next</a>
+					<a class="page-link" href="${pageContext.request.contextPath}/board/gongjiList.bo?nowPage=${pi.nowPage+1}">&raquo;</a>
 				</li>
 			</c:if>
 		</ul>
 	</nav>
 </div>
-<br><br><br><br>
+<pre>
+
+
+
+
+</pre>
 <script>
 	document.querySelector("#enrollBtn").addEventListener('click', (e) => {
 		location.href='${pageContext.request.contextPath}/board/boardForm.bo?tag=공지사항'; <!-- 버튼을 클릭했을 때 글쓰기 페이지로 이동 -->

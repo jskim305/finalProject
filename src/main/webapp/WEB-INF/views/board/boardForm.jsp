@@ -10,7 +10,7 @@
     }
 
     #container {
-        width: 500px;
+        width: 800px;
         margin: 0 auto;
         background-color: #fff;
         padding: 20px;
@@ -61,9 +61,8 @@
         margin-left: 10px;
     }
     textarea {
-    width: 549px;
-    height: 150px;
-    min-width: 500px;
+    height: 500px;
+    min-width: 800px;
     min-height: 150px;
     max-width: 500px;
     max-height: 500px;

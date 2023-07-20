@@ -44,7 +44,7 @@
 	insert into
 	  item
 	values (
-		SQL_ITEM.nextval,
+		SEQ_ITEM.nextval,
 		#{itemSector},
 		#{itemName},
 		#{itemPrice},
@@ -60,7 +60,7 @@
 	insert into
 	  item
 	values (
-		SQL_ITEM.nextval,
+		SEQ_ITEM.nextval,
 		#{itemSector},
 		#{itemName},
 		#{itemPrice},
